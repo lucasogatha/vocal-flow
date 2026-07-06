@@ -5,7 +5,6 @@ import { createClient } from "@/lib/supabase/server";
 // `supabase gen types` (não disponível neste projeto). Preferimos esse
 // escape hatch documentado a duplicar a mesma consulta de contagem em
 // cada service.
-
 type QueryFilter = (query: any) => any;
 
 // Conta linhas de uma tabela aplicando os filtros passados. Elimina a
@@ -47,4 +46,3 @@ export function countByKey<T extends Record<string, unknown>>(
 
   return counts;
 }
-fix eslint
