@@ -22,7 +22,7 @@ export default async function ExerciseDetailPage({
         href="/exercises"
         className="w-fit text-sm text-gray-500 hover:text-black"
       >
-        ← Voltar para a Biblioteca de Exercícios
+        ← Volver a la Biblioteca de Ejercicios
       </Link>
 
       <Card className="flex flex-col gap-3">
@@ -45,7 +45,7 @@ export default async function ExerciseDetailPage({
       </Card>
 
       <Card className="flex flex-col gap-2">
-        <h2 className="text-lg font-semibold">Descrição</h2>
+        <h2 className="text-lg font-semibold">Descripción</h2>
         <p className="whitespace-pre-line text-sm text-gray-600">
           {exercise.description}
         </p>

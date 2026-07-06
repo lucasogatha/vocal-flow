@@ -14,21 +14,21 @@ export default async function AdminOverviewPage() {
   return (
     <div className="flex flex-col gap-8">
       <div>
-        <h1 className="text-2xl font-semibold">Painel Administrativo</h1>
+        <h1 className="text-2xl font-semibold">Panel Administrativo</h1>
         <p className="text-sm text-gray-500">
-          Visão geral de todo o VocalFlow.
+          Resumen de todo VocalFlow.
         </p>
       </div>
 
       <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
-        <StatCard label="Usuários" value={overview.totalUsers} icon={Users} />
+        <StatCard label="Usuarios" value={overview.totalUsers} icon={Users} />
         <StatCard
-          label="Professores"
+          label="Profesores"
           value={overview.totalTeachers}
           icon={GraduationCap}
         />
         <StatCard
-          label="Alunos"
+          label="Alumnos"
           value={overview.totalStudents}
           icon={BookOpen}
         />
@@ -40,7 +40,7 @@ export default async function AdminOverviewPage() {
       </div>
 
       <Card className="flex flex-col gap-3">
-        <h2 className="text-lg font-semibold">Planos</h2>
+        <h2 className="text-lg font-semibold">Planes</h2>
         <div className="flex gap-6 text-sm text-gray-600">
           <span>
             Starter:{" "}
@@ -59,10 +59,10 @@ export default async function AdminOverviewPage() {
 
       <div className="flex gap-6 text-sm">
         <Link href="/admin/teachers" className="text-accent hover:underline">
-          Ver todos os professores →
+          Ver todos los profesores →
         </Link>
         <Link href="/admin/users" className="text-accent hover:underline">
-          Ver todos os usuários →
+          Ver todos los usuarios →
         </Link>
         <Link href="/admin/logs" className="text-accent hover:underline">
           Ver logs →
@@ -70,9 +70,9 @@ export default async function AdminOverviewPage() {
       </div>
 
       <Card className="flex flex-col gap-3">
-        <h2 className="text-lg font-semibold">Atividade recente</h2>
+        <h2 className="text-lg font-semibold">Actividad reciente</h2>
         {recentLogs.length === 0 ? (
-          <EmptyState title="Nenhum log registrado ainda." />
+          <EmptyState title="Ningún log registrado todavía." />
         ) : (
           <ul className="flex flex-col gap-2">
             {recentLogs.map((log) => (
@@ -81,7 +81,7 @@ export default async function AdminOverviewPage() {
                   {log.event_type}
                 </span>{" "}
                 — {log.actor_email ?? "sistema"} ·{" "}
-                {new Date(log.created_at).toLocaleString("pt-BR")}
+                {new Date(log.created_at).toLocaleString("es-419")}
               </li>
             ))}
           </ul>

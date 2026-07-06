@@ -4,18 +4,18 @@ export const studentSchema = z.object({
   name: z
     .string()
     .trim()
-    .min(2, "Informe o nome do aluno")
-    .max(100, "Nome muito longo"),
+    .min(2, "Ingresa el nombre del alumno")
+    .max(100, "Nombre demasiado largo"),
   email: z
     .string()
     .trim()
     .toLowerCase()
-    .email("E-mail inválido")
-    .max(255, "E-mail muito longo"),
+    .email("Correo electrónico inválido")
+    .max(255, "Correo electrónico demasiado largo"),
   phone: z
     .string()
     .trim()
-    .max(20, "Telefone muito longo")
+    .max(20, "Teléfono demasiado largo")
     .optional()
     .or(z.literal("")),
 });

@@ -23,12 +23,12 @@ export function PlanCard({ plan, isCurrent, cta }: PlanCardProps) {
         <h3 className="text-lg font-semibold text-gray-900">{plan.name}</h3>
         <p className="text-3xl font-bold text-gray-900">
           US$ {price}
-          <span className="text-sm font-normal text-gray-500">/mês</span>
+          <span className="text-sm font-normal text-gray-500">/mes</span>
         </p>
         <p className="text-sm text-gray-500">
           {plan.student_limit
-            ? `Até ${plan.student_limit} alunos`
-            : "Alunos ilimitados"}
+            ? `Hasta ${plan.student_limit} alumnos`
+            : "Alumnos ilimitados"}
         </p>
       </div>
 

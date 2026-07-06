@@ -1,16 +1,16 @@
 export type ExerciseCategory =
-  | "Respiração"
-  | "Aquecimento Vocal"
-  | "Apoio Respiratório"
-  | "Afinação"
-  | "Voz de Peito"
-  | "Voz de Cabeça"
-  | "Voz Mista"
-  | "Extensão Vocal"
-  | "Ressonância"
-  | "Dicção";
+  | "Respiración"
+  | "Calentamiento Vocal"
+  | "Apoyo Respiratorio"
+  | "Afinación"
+  | "Voz de Pecho"
+  | "Voz de Cabeza"
+  | "Voz Mixta"
+  | "Extensión Vocal"
+  | "Resonancia"
+  | "Dicción";
 
-export type ExerciseLevel = "Iniciante" | "Intermediário" | "Avançado";
+export type ExerciseLevel = "Principiante" | "Intermedio" | "Avanzado";
 
 export type Exercise = {
   id: string;

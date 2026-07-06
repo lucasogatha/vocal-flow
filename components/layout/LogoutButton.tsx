@@ -18,9 +18,9 @@ export function LogoutButton() {
 
   return (
     <ConfirmDialog
-      title="Sair da conta"
-      description="Você precisará entrar novamente para acessar o painel."
-      confirmLabel="Sair"
+      title="Cerrar sesión"
+      description="Deberás iniciar sesión de nuevo para acceder al panel."
+      confirmLabel="Cerrar sesión"
       onConfirm={handleLogout}
       trigger={(open) => (
         <button
@@ -28,7 +28,7 @@ export function LogoutButton() {
           disabled={isLoggingOut}
           className="text-sm text-gray-500 hover:text-black disabled:opacity-50"
         >
-          {isLoggingOut ? "Saindo..." : "Sair"}
+          {isLoggingOut ? "Cerrando..." : "Cerrar sesión"}
         </button>
       )}
     />

@@ -20,16 +20,16 @@ type HomeworkCompletedEmailProps = {
 };
 
 export default function HomeworkCompletedEmail({
-  teacherName = "Professor",
-  studentName = "Aluno",
-  homeworkTitle = "Treino",
-  dashboardUrl = "https://app.vocalflow.com.br/dashboard",
+  teacherName = "Profesor",
+  studentName = "Alumno",
+  homeworkTitle = "Entrenamiento",
+  dashboardUrl = "https://app.vocalflow.com/dashboard",
 }: HomeworkCompletedEmailProps) {
   return (
     <Html>
       <Head />
       <Preview>
-        {studentName} concluiu: {homeworkTitle}
+        {studentName} completó: {homeworkTitle}
       </Preview>
       <Tailwind
         config={{ theme: { extend: { colors: { accent: "#5E6AD2" } } } }}
@@ -40,7 +40,7 @@ export default function HomeworkCompletedEmail({
               VocalFlow
             </Text>
             <Heading className="mt-3 text-xl font-semibold text-gray-900">
-              {studentName} concluiu um homework!
+              ¡{studentName} completó un homework!
             </Heading>
 
             <Section className="my-4 rounded-lg bg-green-50 p-4">
@@ -48,26 +48,26 @@ export default function HomeworkCompletedEmail({
                 {homeworkTitle}
               </Text>
               <Text className="m-0 mt-1 text-sm font-medium text-green-700">
-                ✓ Concluído
+                ✓ Completado
               </Text>
             </Section>
 
             <Text className="text-sm text-gray-600">
-              Olá {teacherName}, seu aluno acabou de terminar esse treino.
-              Acompanhe o progresso completo no seu painel.
+              Hola {teacherName}, tu alumno acaba de terminar ese
+              entrenamiento. Da seguimiento al progreso completo en tu panel.
             </Text>
 
             <Button
               href={dashboardUrl}
               className="rounded-md bg-accent px-5 py-3 text-center text-sm font-medium text-white"
             >
-              Ver no Dashboard
+              Ver en el Dashboard
             </Button>
 
             <Hr className="my-6 border-gray-200" />
 
             <Text className="text-xs text-gray-400">
-              Você recebeu este e-mail porque é professor no VocalFlow.
+              Recibiste este correo porque eres profesor en VocalFlow.
             </Text>
           </Container>
         </Body>

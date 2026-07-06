@@ -17,7 +17,7 @@ export async function sendHomeworkReceivedEmail(params: {
 
   if (!resend) {
     console.warn(
-      "RESEND_API_KEY não configurada — e-mail de homework recebido não enviado."
+      "RESEND_API_KEY no configurada — correo de homework recibido no enviado."
     );
     return;
   }
@@ -26,7 +26,7 @@ export async function sendHomeworkReceivedEmail(params: {
     await resend.emails.send({
       from: EMAIL_FROM,
       to: params.to,
-      subject: `Novo homework: ${params.homeworkTitle}`,
+      subject: `Nuevo homework: ${params.homeworkTitle}`,
       react: HomeworkReceivedEmail({
         studentName: params.studentName,
         homeworkTitle: params.homeworkTitle,
@@ -35,7 +35,7 @@ export async function sendHomeworkReceivedEmail(params: {
       }),
     });
   } catch (error) {
-    console.error("Falha ao enviar e-mail de homework recebido:", error);
+    console.error("Fallo al enviar correo de homework recibido:", error);
   }
 }
 
@@ -49,7 +49,7 @@ export async function sendHomeworkCompletedEmail(params: {
 
   if (!resend) {
     console.warn(
-      "RESEND_API_KEY não configurada — e-mail de conclusão não enviado."
+      "RESEND_API_KEY no configurada — correo de finalización no enviado."
     );
     return;
   }
@@ -58,7 +58,7 @@ export async function sendHomeworkCompletedEmail(params: {
     await resend.emails.send({
       from: EMAIL_FROM,
       to: params.to,
-      subject: `${params.studentName} concluiu: ${params.homeworkTitle}`,
+      subject: `${params.studentName} completó: ${params.homeworkTitle}`,
       react: HomeworkCompletedEmail({
         teacherName: params.teacherName,
         studentName: params.studentName,
@@ -67,6 +67,6 @@ export async function sendHomeworkCompletedEmail(params: {
       }),
     });
   } catch (error) {
-    console.error("Falha ao enviar e-mail de conclusão:", error);
+    console.error("Fallo al enviar correo de finalización:", error);
   }
 }

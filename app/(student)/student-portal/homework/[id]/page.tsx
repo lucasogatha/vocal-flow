@@ -42,7 +42,7 @@ export default async function StudentHomeworkPage({
         href="/student-portal"
         className="w-fit text-sm text-gray-500 hover:text-black"
       >
-        ← Voltar
+        ← Volver
       </Link>
 
       <div>
@@ -55,11 +55,11 @@ export default async function StudentHomeworkPage({
       <Card className="flex flex-col gap-3">
         <Progress value={percentage} />
         <p className="text-sm text-gray-500">
-          {completed} de {total} exercícios concluídos ({percentage}%)
+          {completed} de {total} ejercicios completados ({percentage}%)
         </p>
         {homework.status === "completed" && (
           <p className="text-sm font-medium text-green-700">
-            Homework concluído! 🎉
+            ¡Homework completado! 🎉
           </p>
         )}
       </Card>
@@ -80,7 +80,7 @@ export default async function StudentHomeworkPage({
                 <span className="flex h-6 w-6 items-center justify-center rounded-full bg-green-100">
                   ✓
                 </span>
-                Concluído
+                Completado
               </div>
             ) : (
               <CompleteExerciseButton linkId={item.linkId} />

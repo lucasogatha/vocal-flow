@@ -25,18 +25,18 @@ export default async function PricingPage() {
   return (
     <div className="flex flex-col gap-8">
       <div>
-        <h1 className="text-2xl font-semibold">Planos</h1>
+        <h1 className="text-2xl font-semibold">Planes</h1>
         <p className="text-sm text-gray-500">
-          Escolha o plano ideal para o seu estúdio.
+          Elige el plan ideal para tu estudio.
         </p>
       </div>
 
       {currentPlanSlug && (
         <p className="text-sm text-gray-500">
-          Você está no plano <strong className="text-gray-900">
+          Estás en el plan <strong className="text-gray-900">
             {currentPlanSlug === "pro" ? "Pro" : "Starter"}
           </strong>{" "}
-          — {studentsCount} aluno{studentsCount === 1 ? "" : "s"} cadastrado
+          — {studentsCount} alumno{studentsCount === 1 ? "" : "s"} registrado
           {studentsCount === 1 ? "" : "s"}.
         </p>
       )}
@@ -53,7 +53,7 @@ export default async function PricingPage() {
               cta={
                 isCurrent ? (
                   <span className="flex h-10 w-full items-center justify-center rounded-md bg-gray-100 text-sm font-medium text-gray-500">
-                    Seu plano atual
+                    Tu plan actual
                   </span>
                 ) : (
                   <UpgradeButton targetPlan={plan.slug} />

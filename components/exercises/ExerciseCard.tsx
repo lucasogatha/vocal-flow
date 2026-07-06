@@ -35,7 +35,7 @@ export function ExerciseCard({ exercise }: { exercise: Exercise }) {
           href={`/exercises/${exercise.id}`}
           className={buttonVariants({ variant: "outline", size: "sm" })}
         >
-          Ver exercício
+          Ver ejercicio
         </Link>
       </div>
     </Card>

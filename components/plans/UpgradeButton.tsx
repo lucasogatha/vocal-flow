@@ -17,14 +17,14 @@ export function UpgradeButton({ targetPlan }: UpgradeButtonProps) {
 
   function handleClick() {
     showToast(
-      "Pagamentos ainda não estão disponíveis. Em breve você poderá migrar de plano por aqui.",
+      "Los pagos aún no están disponibles. Pronto podrás cambiar de plan por aquí.",
       "error"
     );
   }
 
   return (
     <Button onClick={handleClick} className="w-full">
-      {targetPlan === "pro" ? "Fazer upgrade para o Pro" : "Voltar para o Starter"}
+      {targetPlan === "pro" ? "Actualizar a Pro" : "Volver a Starter"}
     </Button>
   );
 }

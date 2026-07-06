@@ -6,10 +6,10 @@ import { LogoutButton } from "@/components/layout/LogoutButton";
 
 const NAV_LINKS = [
   { href: "/dashboard", label: "Dashboard" },
-  { href: "/students", label: "Alunos" },
-  { href: "/exercises", label: "Exercícios" },
+  { href: "/students", label: "Alumnos" },
+  { href: "/exercises", label: "Ejercicios" },
   { href: "/homeworks", label: "Homeworks" },
-  { href: "/pricing", label: "Planos" },
+  { href: "/pricing", label: "Planes" },
 ];
 
 export function TopNav() {

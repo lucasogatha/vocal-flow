@@ -2,22 +2,22 @@ import { createClient } from "@/lib/supabase/server";
 import type { Exercise, ExerciseCategory, ExerciseLevel } from "@/types/exercise";
 
 export const EXERCISE_CATEGORIES: ExerciseCategory[] = [
-  "Respiração",
-  "Aquecimento Vocal",
-  "Apoio Respiratório",
-  "Afinação",
-  "Voz de Peito",
-  "Voz de Cabeça",
-  "Voz Mista",
-  "Extensão Vocal",
-  "Ressonância",
-  "Dicção",
+  "Respiración",
+  "Calentamiento Vocal",
+  "Apoyo Respiratorio",
+  "Afinación",
+  "Voz de Pecho",
+  "Voz de Cabeza",
+  "Voz Mixta",
+  "Extensión Vocal",
+  "Resonancia",
+  "Dicción",
 ];
 
 export const EXERCISE_LEVELS: ExerciseLevel[] = [
-  "Iniciante",
-  "Intermediário",
-  "Avançado",
+  "Principiante",
+  "Intermedio",
+  "Avanzado",
 ];
 
 type GetExercisesParams = {

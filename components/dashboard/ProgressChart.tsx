@@ -21,7 +21,7 @@ export function ProgressChart({ data }: ProgressChartProps) {
       viewBox={`0 0 ${width} ${CHART_HEIGHT + LABEL_HEIGHT}`}
       className="h-40 w-full"
       role="img"
-      aria-label="Homeworks concluídos nos últimos 7 dias"
+      aria-label="Homeworks completados en los últimos 7 días"
     >
       {data.map((day, index) => {
         const rawHeight = (day.count / max) * CHART_HEIGHT;

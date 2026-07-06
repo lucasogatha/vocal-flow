@@ -18,12 +18,12 @@ export function CompleteExerciseButton({
   );
 
   if (completed) {
-    return <SuccessBadge label="Concluído" visible={visible} />;
+    return <SuccessBadge label="Completado" visible={visible} />;
   }
 
   return (
     <Button onClick={trigger} disabled={isPending} size="sm">
-      {isPending ? "Salvando..." : "Concluir exercício"}
+      {isPending ? "Guardando..." : "Completar ejercicio"}
     </Button>
   );
 }

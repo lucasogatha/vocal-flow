@@ -27,7 +27,7 @@ export async function requireTeacher(): Promise<RequireTeacherResult> {
   if (!user || user.user_metadata?.role !== "teacher") {
     return {
       ok: false,
-      message: "Apenas professores podem realizar esta ação.",
+      message: "Solo los profesores pueden realizar esta acción.",
     };
   }
 

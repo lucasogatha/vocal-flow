@@ -6,15 +6,15 @@ const STATUS_CONFIG: Record<
   { label: string; className: string }
 > = {
   in_progress: {
-    label: "Em andamento",
+    label: "En progreso",
     className: "bg-accent/10 text-accent",
   },
   completed: {
-    label: "Concluído",
+    label: "Completado",
     className: "bg-green-100 text-green-700",
   },
   overdue: {
-    label: "Atrasado",
+    label: "Vencido",
     className: "bg-red-100 text-red-700",
   },
 };

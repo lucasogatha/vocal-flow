@@ -24,7 +24,7 @@ export function StudentCard({
 
       <div className="flex flex-col gap-1 text-sm text-gray-500">
         <span>{homeworksCount} homeworks enviados</span>
-        <span>Última atividade: {lastActivityLabel}</span>
+        <span>Última actividad: {lastActivityLabel}</span>
       </div>
 
       <Link

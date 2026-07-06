@@ -36,7 +36,7 @@ export function ExercisePicker({ exercises }: ExercisePickerProps) {
   return (
     <div className="flex flex-col gap-4">
       <p className="text-sm font-medium text-gray-700">
-        {selected.length}/{MAX_SELECTED} exercícios selecionados
+        {selected.length}/{MAX_SELECTED} ejercicios seleccionados
       </p>
 
       <div className="flex max-h-96 flex-col gap-4 overflow-y-auto rounded-md border border-gray-200 p-3">

@@ -24,7 +24,7 @@ export function LoginForm() {
     const { error } = await signIn(values);
 
     if (error) {
-      setServerError("E-mail ou senha inválidos.");
+      setServerError("Correo electrónico o contraseña inválidos.");
       return;
     }
 
@@ -39,7 +39,7 @@ export function LoginForm() {
     >
       <div className="flex flex-col gap-1">
         <label htmlFor="email" className="text-sm font-medium text-gray-700">
-          E-mail
+          Correo electrónico
         </label>
         <input
           id="email"
@@ -58,7 +58,7 @@ export function LoginForm() {
           htmlFor="password"
           className="text-sm font-medium text-gray-700"
         >
-          Senha
+          Contraseña
         </label>
         <input
           id="password"
@@ -81,7 +81,7 @@ export function LoginForm() {
         disabled={isSubmitting}
         className="rounded-md bg-black px-4 py-2 text-sm font-medium text-white disabled:opacity-50"
       >
-        {isSubmitting ? "Entrando..." : "Entrar"}
+        {isSubmitting ? "Iniciando sesión..." : "Iniciar sesión"}
       </button>
     </form>
   );

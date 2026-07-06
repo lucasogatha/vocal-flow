@@ -1,8 +1,8 @@
 import type { Homework } from "@/types/homework";
 
 export const STATUS_LABEL: Record<string, string> = {
-  pending: "Pendente",
-  completed: "Concluído",
+  pending: "Pendiente",
+  completed: "Completado",
 };
 
 function isOverdue(homework: Homework, today: string): boolean {

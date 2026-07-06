@@ -5,7 +5,7 @@ export default function manifest(): MetadataRoute.Manifest {
     name: "VocalFlow",
     short_name: "VocalFlow",
     description:
-      "Acompanhamento de treinos vocais entre professor e aluno.",
+      "Seguimiento de entrenamiento vocal entre profesor y alumno.",
     start_url: "/dashboard",
     display: "standalone",
     background_color: "#ffffff",

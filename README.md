@@ -139,6 +139,9 @@ Migrations em `supabase/migrations/`, nesta ordem:
 | `0010` | Tabelas `plans` e `subscriptions` (sistema de assinaturas) |
 | `0011` | Tabela `profiles` (sincronizada de `auth.users` via trigger), necessária para notificações por e-mail entre aluno e professor |
 | `0012` | Painel administrativo: `profiles.is_admin`, RLS de leitura ampliada para admins, tabela `admin_logs` |
+| `0013` | Traduz os 30 exercícios da Biblioteca para espanhol (atualiza em vez de recriar, preservando ids) |
+| `0014` | Traduz as features dos planos (`plans`) para espanhol |
+| `0015` | Traduz as mensagens de erro dos triggers de segurança para espanhol |
 
 ### Promovendo o primeiro administrador
 

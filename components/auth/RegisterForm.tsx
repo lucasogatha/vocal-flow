@@ -37,7 +37,7 @@ export function RegisterForm() {
     // sessão criada imediatamente após o cadastro.
     if (!data.session) {
       setConfirmationMessage(
-        "Cadastro realizado. Verifique seu e-mail para confirmar a conta."
+        "Registro completado. Revisa tu correo para confirmar la cuenta."
       );
       return;
     }
@@ -53,7 +53,7 @@ export function RegisterForm() {
     >
       <div className="flex flex-col gap-1">
         <label htmlFor="name" className="text-sm font-medium text-gray-700">
-          Nome
+          Nombre
         </label>
         <input
           id="name"
@@ -69,7 +69,7 @@ export function RegisterForm() {
 
       <div className="flex flex-col gap-1">
         <label htmlFor="email" className="text-sm font-medium text-gray-700">
-          E-mail
+          Correo electrónico
         </label>
         <input
           id="email"
@@ -88,7 +88,7 @@ export function RegisterForm() {
           htmlFor="password"
           className="text-sm font-medium text-gray-700"
         >
-          Senha
+          Contraseña
         </label>
         <input
           id="password"
@@ -114,7 +114,7 @@ export function RegisterForm() {
         disabled={isSubmitting}
         className="rounded-md bg-black px-4 py-2 text-sm font-medium text-white disabled:opacity-50"
       >
-        {isSubmitting ? "Criando conta..." : "Criar conta"}
+        {isSubmitting ? "Creando cuenta..." : "Crear cuenta"}
       </button>
     </form>
   );

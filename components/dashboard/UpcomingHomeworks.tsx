@@ -13,7 +13,7 @@ export function UpcomingHomeworks({ items }: UpcomingHomeworksProps) {
   if (items.length === 0) {
     return (
       <p className="text-sm text-gray-500">
-        Nenhum homework com prazo próximo.
+        Ningún homework con plazo próximo.
       </p>
     );
   }
@@ -32,7 +32,7 @@ export function UpcomingHomeworks({ items }: UpcomingHomeworksProps) {
             <span className="text-xs text-gray-500">{item.studentName}</span>
           </div>
           <span className="whitespace-nowrap text-xs font-medium text-gray-500">
-            {new Date(item.dueDate + "T00:00:00").toLocaleDateString("pt-BR")}
+            {new Date(item.dueDate + "T00:00:00").toLocaleDateString("es-419")}
           </span>
         </li>
       ))}

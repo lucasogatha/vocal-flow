@@ -46,7 +46,7 @@ export function Pagination({
             : "pointer-events-none text-gray-300"
         )}
       >
-        Próxima
+        Siguiente
       </Link>
     </div>
   );

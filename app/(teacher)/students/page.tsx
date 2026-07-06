@@ -54,14 +54,14 @@ export default async function StudentsPage({
     <div className="flex flex-col gap-6">
       <div className="flex flex-wrap items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-semibold">Meus Alunos</h1>
+          <h1 className="text-2xl font-semibold">Mis Alumnos</h1>
           <p className="text-sm text-gray-500">
-            Gerencie os alunos do seu estúdio.
+            Gestiona los alumnos de tu estudio.
           </p>
         </div>
 
         <Link href="/students/new" className={buttonVariants()}>
-          Novo aluno
+          Nuevo alumno
         </Link>
       </div>
 
@@ -72,18 +72,18 @@ export default async function StudentsPage({
           icon={Users}
           title={
             search
-              ? "Nenhum aluno encontrado para essa busca."
-              : "Nenhum aluno cadastrado ainda."
+              ? "Ningún alumno encontrado para esta búsqueda."
+              : "Ningún alumno registrado todavía."
           }
           description={
             search
-              ? "Tente buscar por outro nome."
-              : "Cadastre o primeiro aluno para começar a enviar homeworks."
+              ? "Intenta buscar con otro nombre."
+              : "Registra tu primer alumno para empezar a enviar homeworks."
           }
           action={
             !search && (
               <Link href="/students/new" className={buttonVariants()}>
-                Novo aluno
+                Nuevo alumno
               </Link>
             )
           }
@@ -95,7 +95,7 @@ export default async function StudentsPage({
               key={student.id}
               student={student}
               homeworksCount={homeworksCount}
-              lastActivityLabel="Nenhuma atividade ainda"
+              lastActivityLabel="Ninguna actividad todavía"
             />
           ))}
         </div>

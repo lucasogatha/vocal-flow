@@ -66,14 +66,14 @@ export async function createStudentAction(
 
   if (error) {
     return {
-      message: "Não foi possível cadastrar o aluno. Tente novamente.",
+      message: "No fue posible registrar al alumno. Intenta de nuevo.",
     };
   }
 
   revalidatePath("/students");
   redirect(
     `/students?toast=${encodeURIComponent(
-      `${parsed.data.name} foi cadastrado com sucesso.`
+      `${parsed.data.name} fue registrado con éxito.`
     )}`
   );
 }

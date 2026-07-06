@@ -12,7 +12,7 @@ export function StudentSearch({ defaultValue }: StudentSearchProps) {
         type="text"
         name="search"
         defaultValue={defaultValue}
-        placeholder="Buscar aluno pelo nome"
+        placeholder="Buscar alumno por nombre"
         className="max-w-xs"
       />
       <Button type="submit" variant="outline">

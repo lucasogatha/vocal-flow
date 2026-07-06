@@ -26,7 +26,7 @@ export async function createHomeworkAction(
 
   const student = await getStudentById(studentId, auth.userId);
   if (!student) {
-    return { message: "Aluno não encontrado." };
+    return { message: "Alumno no encontrado." };
   }
 
   const parsed = homeworkSchema.safeParse({
@@ -60,7 +60,7 @@ export async function createHomeworkAction(
 
   if (error) {
     return {
-      message: "Não foi possível criar o homework. Tente novamente.",
+      message: "No fue posible crear el homework. Intenta de nuevo.",
     };
   }
 
@@ -70,7 +70,7 @@ export async function createHomeworkAction(
     homeworkTitle: parsed.data.name,
     dueDateLabel: new Date(
       parsed.data.dueDate + "T00:00:00"
-    ).toLocaleDateString("pt-BR"),
+    ).toLocaleDateString("es-419"),
   });
 
   await logEvent(
@@ -82,7 +82,7 @@ export async function createHomeworkAction(
   revalidatePath(`/students/${studentId}`);
   redirect(
     `/students/${studentId}?toast=${encodeURIComponent(
-      "Homework criado com sucesso."
+      "Homework creado con éxito."
     )}`
   );
 }

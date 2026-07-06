@@ -15,20 +15,20 @@ export function PlanLimitModal({ limit, onClose }: PlanLimitModalProps) {
       <div className="flex w-full max-w-sm flex-col gap-4 rounded-xl bg-white p-6 shadow-lg">
         <div className="flex flex-col gap-1">
           <h2 className="text-lg font-semibold text-gray-900">
-            Limite do plano Starter atingido
+            Límite del plan Starter alcanzado
           </h2>
           <p className="text-sm text-gray-500">
-            Seu plano permite até {limit} alunos cadastrados. Faça upgrade
-            para o Plano Pro para cadastrar alunos ilimitados.
+            Tu plan permite hasta {limit} alumnos registrados. Actualiza
+            al Plan Pro para registrar alumnos ilimitados.
           </p>
         </div>
 
         <div className="flex justify-end gap-2">
           <Button variant="outline" onClick={onClose}>
-            Fechar
+            Cerrar
           </Button>
           <Link href="/pricing" className={buttonVariants()}>
-            Ver planos
+            Ver planes
           </Link>
         </div>
       </div>

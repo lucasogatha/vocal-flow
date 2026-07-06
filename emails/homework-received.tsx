@@ -20,15 +20,15 @@ type HomeworkReceivedEmailProps = {
 };
 
 export default function HomeworkReceivedEmail({
-  studentName = "Aluno",
-  homeworkTitle = "Novo treino",
-  dueDateLabel = "Sem prazo definido",
-  portalUrl = "https://app.vocalflow.com.br/student-portal",
+  studentName = "Alumno",
+  homeworkTitle = "Nuevo entrenamiento",
+  dueDateLabel = "Sin plazo definido",
+  portalUrl = "https://app.vocalflow.com/student-portal",
 }: HomeworkReceivedEmailProps) {
   return (
     <Html>
       <Head />
-      <Preview>Você recebeu um novo homework: {homeworkTitle}</Preview>
+      <Preview>Recibiste un nuevo homework: {homeworkTitle}</Preview>
       <Tailwind
         config={{ theme: { extend: { colors: { accent: "#5E6AD2" } } } }}
       >
@@ -38,10 +38,10 @@ export default function HomeworkReceivedEmail({
               VocalFlow
             </Text>
             <Heading className="mt-3 text-xl font-semibold text-gray-900">
-              Novo homework para você, {studentName}!
+              ¡Nuevo homework para ti, {studentName}!
             </Heading>
             <Text className="text-sm text-gray-600">
-              Seu professor acabou de te enviar um novo treino:
+              Tu profesor acaba de enviarte un nuevo entrenamiento:
             </Text>
 
             <Section className="my-4 rounded-lg bg-gray-50 p-4">
@@ -49,7 +49,7 @@ export default function HomeworkReceivedEmail({
                 {homeworkTitle}
               </Text>
               <Text className="m-0 mt-1 text-sm text-gray-500">
-                Prazo: {dueDateLabel}
+                Plazo: {dueDateLabel}
               </Text>
             </Section>
 
@@ -57,14 +57,14 @@ export default function HomeworkReceivedEmail({
               href={portalUrl}
               className="rounded-md bg-accent px-5 py-3 text-center text-sm font-medium text-white"
             >
-              Abrir no VocalFlow
+              Abrir en VocalFlow
             </Button>
 
             <Hr className="my-6 border-gray-200" />
 
             <Text className="text-xs text-gray-400">
-              Você recebeu este e-mail porque seu professor usa o VocalFlow
-              para acompanhar seus treinos vocais.
+              Recibiste este correo porque tu profesor usa VocalFlow para
+              dar seguimiento a tus entrenamientos vocales.
             </Text>
           </Container>
         </Body>

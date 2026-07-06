@@ -8,23 +8,23 @@ export default async function AdminUsersPage() {
   return (
     <div className="flex flex-col gap-6">
       <div>
-        <h1 className="text-2xl font-semibold">Usuários</h1>
+        <h1 className="text-2xl font-semibold">Usuarios</h1>
         <p className="text-sm text-gray-500">
-          Todas as contas cadastradas (professores e alunos).
+          Todas las cuentas registradas (profesores y alumnos).
         </p>
       </div>
 
       {users.length === 0 ? (
-        <EmptyState icon={Users} title="Nenhum usuário cadastrado ainda." />
+        <EmptyState icon={Users} title="Ningún usuario registrado todavía." />
       ) : (
         <div className="overflow-x-auto rounded-xl border border-gray-200 bg-white">
           <table className="w-full text-left text-sm">
             <thead>
               <tr className="border-b border-gray-100 text-xs uppercase tracking-wide text-gray-400">
-                <th className="px-4 py-3 font-medium">Nome</th>
-                <th className="px-4 py-3 font-medium">E-mail</th>
-                <th className="px-4 py-3 font-medium">Papel</th>
-                <th className="px-4 py-3 font-medium">Cadastro</th>
+                <th className="px-4 py-3 font-medium">Nombre</th>
+                <th className="px-4 py-3 font-medium">Correo</th>
+                <th className="px-4 py-3 font-medium">Rol</th>
+                <th className="px-4 py-3 font-medium">Registro</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-100">
@@ -35,10 +35,10 @@ export default async function AdminUsersPage() {
                   </td>
                   <td className="px-4 py-3 text-gray-600">{user.email}</td>
                   <td className="px-4 py-3 text-gray-600">
-                    {user.role === "teacher" ? "Professor" : "Aluno"}
+                    {user.role === "teacher" ? "Profesor" : "Alumno"}
                   </td>
                   <td className="px-4 py-3 text-gray-600">
-                    {new Date(user.created_at).toLocaleDateString("pt-BR")}
+                    {new Date(user.created_at).toLocaleDateString("es-419")}
                   </td>
                 </tr>
               ))}

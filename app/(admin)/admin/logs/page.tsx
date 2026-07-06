@@ -10,22 +10,23 @@ export default async function AdminLogsPage() {
       <div>
         <h1 className="text-2xl font-semibold">Logs</h1>
         <p className="text-sm text-gray-500">
-          Eventos recentes registrados no sistema. Cobre os principais
-          eventos de negócio, não é uma auditoria exaustiva de cada ação.
+          Eventos recientes registrados en el sistema. Cubre los
+          principales eventos de negocio, no es una auditoría exhaustiva de
+          cada acción.
         </p>
       </div>
 
       {logs.length === 0 ? (
-        <EmptyState icon={History} title="Nenhum log registrado ainda." />
+        <EmptyState icon={History} title="Ningún log registrado todavía." />
       ) : (
         <div className="overflow-x-auto rounded-xl border border-gray-200 bg-white">
           <table className="w-full text-left text-sm">
             <thead>
               <tr className="border-b border-gray-100 text-xs uppercase tracking-wide text-gray-400">
                 <th className="px-4 py-3 font-medium">Evento</th>
-                <th className="px-4 py-3 font-medium">Ator</th>
-                <th className="px-4 py-3 font-medium">Detalhes</th>
-                <th className="px-4 py-3 font-medium">Data</th>
+                <th className="px-4 py-3 font-medium">Actor</th>
+                <th className="px-4 py-3 font-medium">Detalles</th>
+                <th className="px-4 py-3 font-medium">Fecha</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-100">
@@ -43,7 +44,7 @@ export default async function AdminLogsPage() {
                       : "—"}
                   </td>
                   <td className="px-4 py-3 text-gray-600">
-                    {new Date(log.created_at).toLocaleString("pt-BR")}
+                    {new Date(log.created_at).toLocaleString("es-419")}
                   </td>
                 </tr>
               ))}

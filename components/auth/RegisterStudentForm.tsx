@@ -35,7 +35,7 @@ export function RegisterStudentForm() {
 
     if (!data.session) {
       setConfirmationMessage(
-        "Conta criada. Verifique seu e-mail para confirmar e depois faça login."
+        "Cuenta creada. Revisa tu correo para confirmarla y luego inicia sesión."
       );
       return;
     }
@@ -51,7 +51,7 @@ export function RegisterStudentForm() {
     >
       <div className="flex flex-col gap-1">
         <label htmlFor="email" className="text-sm font-medium text-gray-700">
-          E-mail
+          Correo electrónico
         </label>
         <input
           id="email"
@@ -61,7 +61,7 @@ export function RegisterStudentForm() {
           className="rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-black"
         />
         <span className="text-xs text-gray-400">
-          Use o mesmo e-mail que seu professor cadastrou.
+          Usa el mismo correo que tu profesor registró.
         </span>
         {errors.email && (
           <span className="text-sm text-red-600">{errors.email.message}</span>
@@ -73,7 +73,7 @@ export function RegisterStudentForm() {
           htmlFor="password"
           className="text-sm font-medium text-gray-700"
         >
-          Senha
+          Contraseña
         </label>
         <input
           id="password"
@@ -99,7 +99,7 @@ export function RegisterStudentForm() {
         disabled={isSubmitting}
         className="rounded-md bg-black px-4 py-2 text-sm font-medium text-white disabled:opacity-50"
       >
-        {isSubmitting ? "Criando conta..." : "Ativar conta"}
+        {isSubmitting ? "Creando cuenta..." : "Activar cuenta"}
       </button>
     </form>
   );

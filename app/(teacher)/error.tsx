@@ -19,13 +19,13 @@ export default function TeacherError({
     <div className="flex min-h-[60vh] items-center justify-center px-4">
       <Card className="flex max-w-sm flex-col items-center gap-3 text-center">
         <h1 className="text-lg font-semibold text-gray-900">
-          Algo deu errado
+          Algo salió mal
         </h1>
         <p className="text-sm text-gray-500">
-          Não conseguimos carregar esta página agora. Tente novamente em
-          alguns instantes.
+          No pudimos cargar esta página ahora. Intenta de nuevo en unos
+          instantes.
         </p>
-        <Button onClick={reset}>Tentar novamente</Button>
+        <Button onClick={reset}>Intentar de nuevo</Button>
       </Card>
     </div>
   );

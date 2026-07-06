@@ -22,7 +22,7 @@ export default async function DashboardPage() {
   const user = await getCurrentUser();
 
   const name =
-    (user?.user_metadata?.name as string | undefined) ?? "Professor";
+    (user?.user_metadata?.name as string | undefined) ?? "Profesor";
 
   let studentsCount = 0;
   let sentCount = 0;
@@ -62,59 +62,59 @@ export default async function DashboardPage() {
   return (
     <div className="flex flex-col gap-8">
       <div>
-        <h1 className="text-2xl font-semibold text-gray-900">Olá, {name}</h1>
+        <h1 className="text-2xl font-semibold text-gray-900">Hola, {name}</h1>
         <p className="text-sm text-gray-500">
-          Aqui está um resumo do seu estúdio.
+          Aquí tienes un resumen de tu estudio.
         </p>
       </div>
 
       {subscription && (
         <div className="flex flex-wrap items-center justify-between gap-3 rounded-lg border border-gray-200 bg-white px-4 py-3">
           <p className="text-sm text-gray-600">
-            Plano{" "}
+            Plan{" "}
             <strong className="text-gray-900">
               {subscription.plan.name}
             </strong>{" "}
             ·{" "}
             {subscription.plan.student_limit
-              ? `${studentsCount} / ${subscription.plan.student_limit} alunos`
-              : `${studentsCount} alunos (ilimitado)`}
+              ? `${studentsCount} / ${subscription.plan.student_limit} alumnos`
+              : `${studentsCount} alumnos (ilimitado)`}
           </p>
           {subscription.plan_slug === "starter" && (
             <Link
               href="/pricing"
               className="text-sm font-medium text-accent hover:underline"
             >
-              Fazer upgrade
+              Actualizar plan
             </Link>
           )}
         </div>
       )}
 
       <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
-        <StatCard label="Alunos" value={studentsCount} icon={Users} />
+        <StatCard label="Alumnos" value={studentsCount} icon={Users} />
         <StatCard
           label="Homeworks enviados"
           value={sentCount}
           icon={Send}
         />
         <StatCard
-          label="Homeworks concluídos"
+          label="Homeworks completados"
           value={completedCount}
           icon={CheckCircle2}
         />
         <StatCard
-          label="Taxa de conclusão"
+          label="Tasa de finalización"
           value={`${completionRate}%`}
           icon={Percent}
         />
         <StatCard
-          label="Alunos sem atividade"
+          label="Alumnos sin actividad"
           value={studentsWithoutActivity}
           icon={UserX}
         />
         <StatCard
-          label="Homeworks atrasados"
+          label="Homeworks vencidos"
           value={overdueCount}
           icon={AlertTriangle}
         />
@@ -123,7 +123,7 @@ export default async function DashboardPage() {
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
         <Card className="flex flex-col gap-4">
           <h2 className="text-sm font-semibold text-gray-900">
-            Progresso nos últimos 7 dias
+            Progreso en los últimos 7 días
           </h2>
           <ProgressChart data={weeklyTrend} />
         </Card>

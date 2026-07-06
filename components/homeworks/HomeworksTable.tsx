@@ -9,8 +9,8 @@ export function HomeworksTable({ rows }: { rows: HomeworkOverviewRow[] }) {
     return (
       <EmptyState
         icon={ClipboardList}
-        title="Nenhum homework encontrado."
-        description="Crie um homework a partir do perfil de um aluno."
+        title="Ningún homework encontrado."
+        description="Crea un homework desde el perfil de un alumno."
       />
     );
   }
@@ -21,10 +21,10 @@ export function HomeworksTable({ rows }: { rows: HomeworkOverviewRow[] }) {
         <thead>
           <tr className="border-b border-gray-100 text-xs uppercase tracking-wide text-gray-400">
             <th className="px-4 py-3 font-medium">Homework</th>
-            <th className="px-4 py-3 font-medium">Aluno</th>
-            <th className="px-4 py-3 font-medium">Exercícios</th>
-            <th className="px-4 py-3 font-medium">Progresso</th>
-            <th className="px-4 py-3 font-medium">Prazo</th>
+            <th className="px-4 py-3 font-medium">Alumno</th>
+            <th className="px-4 py-3 font-medium">Ejercicios</th>
+            <th className="px-4 py-3 font-medium">Progreso</th>
+            <th className="px-4 py-3 font-medium">Plazo</th>
             <th className="px-4 py-3 font-medium">Status</th>
           </tr>
         </thead>
@@ -50,7 +50,7 @@ export function HomeworksTable({ rows }: { rows: HomeworkOverviewRow[] }) {
               </td>
               <td className="px-4 py-3 text-gray-600">
                 {new Date(row.dueDate + "T00:00:00").toLocaleDateString(
-                  "pt-BR"
+                  "es-419"
                 )}
               </td>
               <td className="px-4 py-3">

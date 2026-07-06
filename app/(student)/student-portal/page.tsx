@@ -21,11 +21,11 @@ export default async function StudentPortalPage() {
   if (!student) {
     return (
       <div className="mx-auto flex max-w-md flex-col items-center gap-3 px-4 py-16 text-center">
-        <h1 className="text-xl font-semibold">Conta ainda não vinculada</h1>
+        <h1 className="text-xl font-semibold">Cuenta aún no vinculada</h1>
         <p className="text-sm text-gray-500">
-          Não encontramos nenhum professor que tenha cadastrado o e-mail{" "}
-          <span className="font-medium">{user.email}</span>. Peça para o seu
-          professor te cadastrar com esse mesmo e-mail no VocalFlow.
+          No encontramos ningún profesor que haya registrado el correo{" "}
+          <span className="font-medium">{user.email}</span>. Pídele a tu
+          profesor que te registre con este mismo correo en VocalFlow.
         </p>
       </div>
     );
@@ -44,16 +44,16 @@ export default async function StudentPortalPage() {
   return (
     <div className="mx-auto flex max-w-md flex-col gap-6 px-4 py-10">
       <div>
-        <h1 className="text-2xl font-semibold">Olá, {student.name}</h1>
-        <p className="text-sm text-gray-500">Seu treino da semana.</p>
+        <h1 className="text-2xl font-semibold">Hola, {student.name}</h1>
+        <p className="text-sm text-gray-500">Tu entrenamiento de la semana.</p>
       </div>
 
       <Card className="flex flex-col gap-3">
-        <h2 className="text-lg font-semibold">Meus Homeworks</h2>
+        <h2 className="text-lg font-semibold">Mis Homeworks</h2>
 
         {pendingHomeworks.length === 0 ? (
           <p className="text-sm text-gray-500">
-            Nenhum homework pendente no momento.
+            Ningún homework pendiente por el momento.
           </p>
         ) : (
           <ul className="flex flex-col gap-2">
@@ -65,10 +65,10 @@ export default async function StudentPortalPage() {
                 <div className="flex flex-col">
                   <span className="font-medium">{homework.name}</span>
                   <span className="text-gray-500">
-                    Prazo:{" "}
+                    Plazo:{" "}
                     {new Date(
                       homework.due_date + "T00:00:00"
-                    ).toLocaleDateString("pt-BR")}
+                    ).toLocaleDateString("es-419")}
                   </span>
                 </div>
                 <Link
@@ -84,10 +84,10 @@ export default async function StudentPortalPage() {
       </Card>
 
       <Card className="flex flex-col gap-3">
-        <h2 className="text-lg font-semibold">Histórico</h2>
+        <h2 className="text-lg font-semibold">Historial</h2>
 
         {history.length === 0 ? (
-          <p className="text-sm text-gray-500">Nenhum homework ainda.</p>
+          <p className="text-sm text-gray-500">Ningún homework todavía.</p>
         ) : (
           <ul className="flex flex-col gap-2">
             {history.map((homework) => (
@@ -98,9 +98,9 @@ export default async function StudentPortalPage() {
                 <span>{homework.name}</span>
                 <span className="text-xs text-gray-500">
                   {homework.status === "completed" && homework.completed_at
-                    ? `Concluído em ${new Date(
+                    ? `Completado el ${new Date(
                         homework.completed_at
-                      ).toLocaleDateString("pt-BR")}`
+                      ).toLocaleDateString("es-419")}`
                     : STATUS_LABEL[homework.status] ?? homework.status}
                 </span>
               </li>

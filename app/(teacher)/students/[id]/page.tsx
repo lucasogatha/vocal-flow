@@ -36,17 +36,17 @@ export default async function StudentDetailPage({
   const counts = getHomeworkCounts(homeworks);
 
   const memberSince = new Date(student.created_at).toLocaleDateString(
-    "pt-BR"
+    "es-419"
   );
   const lastSeenLabel = student.last_seen_at
-    ? new Date(student.last_seen_at).toLocaleDateString("pt-BR", {
+    ? new Date(student.last_seen_at).toLocaleDateString("es-419", {
         day: "2-digit",
         month: "2-digit",
         year: "numeric",
         hour: "2-digit",
         minute: "2-digit",
       })
-    : "Nunca acessou";
+    : "Nunca ingresó";
 
   return (
     <div className="flex flex-col gap-6">
@@ -54,7 +54,7 @@ export default async function StudentDetailPage({
         href="/students"
         className="w-fit text-sm text-gray-500 hover:text-black"
       >
-        ← Voltar para Meus Alunos
+        ← Volver a Mis Alumnos
       </Link>
 
       <Card className="flex flex-col gap-1">
@@ -64,32 +64,32 @@ export default async function StudentDetailPage({
           <p className="text-sm text-gray-500">{student.phone}</p>
         )}
         <div className="mt-2 flex flex-wrap gap-4 text-xs text-gray-400">
-          <span>Aluno desde {memberSince}</span>
-          <span>Último acesso: {lastSeenLabel}</span>
+          <span>Alumno desde {memberSince}</span>
+          <span>Último acceso: {lastSeenLabel}</span>
         </div>
       </Card>
 
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
         <StatCard label="Enviados" value={counts.sent} icon={Send} />
         <StatCard
-          label="Concluídos"
+          label="Completados"
           value={counts.completed}
           icon={CheckCircle2}
         />
         <StatCard
-          label="Atrasados"
+          label="Vencidos"
           value={counts.overdue}
           icon={AlertTriangle}
         />
       </div>
 
       <Card className="flex flex-col gap-3">
-        <h2 className="text-lg font-semibold">Progresso</h2>
+        <h2 className="text-lg font-semibold">Progreso</h2>
         <Progress value={progress.percentage} />
         <p className="text-sm text-gray-500">
           {progress.total === 0
-            ? "Nenhum homework enviado ainda."
-            : `${progress.completed} de ${progress.total} homeworks concluídos (${progress.percentage}%)`}
+            ? "Ningún homework enviado todavía."
+            : `${progress.completed} de ${progress.total} homeworks completados (${progress.percentage}%)`}
         </p>
       </Card>
 
@@ -107,7 +107,7 @@ export default async function StudentDetailPage({
         {homeworks.length === 0 ? (
           <EmptyState
             icon={ClipboardList}
-            title="Nenhum homework enviado ainda."
+            title="Ningún homework enviado todavía."
           />
         ) : (
           <ul className="flex flex-col gap-2">
@@ -121,16 +121,16 @@ export default async function StudentDetailPage({
                   <span className="text-gray-500">
                     {homework.exerciseCount}{" "}
                     {homework.exerciseCount === 1
-                      ? "exercício"
-                      : "exercícios"}{" "}
-                    · Prazo:{" "}
+                      ? "ejercicio"
+                      : "ejercicios"}{" "}
+                    · Plazo:{" "}
                     {new Date(
                       homework.due_date + "T00:00:00"
-                    ).toLocaleDateString("pt-BR")}
+                    ).toLocaleDateString("es-419")}
                   </span>
                 </div>
                 <span className="text-xs text-gray-500">
-                  {homework.status === "completed" ? "Concluído" : "Pendente"}
+                  {homework.status === "completed" ? "Completado" : "Pendiente"}
                 </span>
               </li>
             ))}

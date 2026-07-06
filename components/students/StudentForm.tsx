@@ -28,7 +28,7 @@ export function StudentForm() {
     <>
       <form action={formAction} className="flex flex-col gap-4">
         <div className="flex flex-col gap-1">
-          <Label htmlFor="name">Nome</Label>
+          <Label htmlFor="name">Nombre</Label>
           <Input id="name" name="name" type="text" autoComplete="name" />
           {state.errors?.name && (
             <span className="text-sm text-red-600">{state.errors.name}</span>
@@ -36,7 +36,7 @@ export function StudentForm() {
         </div>
 
         <div className="flex flex-col gap-1">
-          <Label htmlFor="email">E-mail</Label>
+          <Label htmlFor="email">Correo electrónico</Label>
           <Input id="email" name="email" type="email" autoComplete="email" />
           {state.errors?.email && (
             <span className="text-sm text-red-600">{state.errors.email}</span>
@@ -44,7 +44,7 @@ export function StudentForm() {
         </div>
 
         <div className="flex flex-col gap-1">
-          <Label htmlFor="phone">Telefone (opcional)</Label>
+          <Label htmlFor="phone">Teléfono (opcional)</Label>
           <Input id="phone" name="phone" type="tel" autoComplete="tel" />
           {state.errors?.phone && (
             <span className="text-sm text-red-600">{state.errors.phone}</span>
@@ -71,7 +71,7 @@ function SubmitButton() {
 
   return (
     <Button type="submit" disabled={pending}>
-      {pending ? "Salvando..." : "Cadastrar aluno"}
+      {pending ? "Guardando..." : "Registrar alumno"}
     </Button>
   );
 }

@@ -5,9 +5,9 @@ export default function NewStudentPage() {
   return (
     <div className="flex max-w-md flex-col gap-6">
       <div>
-        <h1 className="text-2xl font-semibold">Novo aluno</h1>
+        <h1 className="text-2xl font-semibold">Nuevo alumno</h1>
         <p className="text-sm text-gray-500">
-          Cadastre um aluno para acompanhar o progresso dele.
+          Registra un alumno para dar seguimiento a su progreso.
         </p>
       </div>
 
@@ -17,7 +17,7 @@ export default function NewStudentPage() {
         href="/students"
         className="text-sm text-gray-500 hover:text-black"
       >
-        Voltar para a lista
+        Volver a la lista
       </Link>
     </div>
   );

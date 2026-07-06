@@ -31,14 +31,14 @@ export default async function NewHomeworkPage({
         href={`/students/${student.id}`}
         className="w-fit text-sm text-gray-500 hover:text-black"
       >
-        ← Voltar para {student.name}
+        ← Volver a {student.name}
       </Link>
 
       <div>
-        <h1 className="text-2xl font-semibold">Novo Homework</h1>
+        <h1 className="text-2xl font-semibold">Nuevo Homework</h1>
         <p className="text-sm text-gray-500">
-          Monte um homework personalizado para {student.name} com exercícios
-          da biblioteca.
+          Arma un homework personalizado para {student.name} con ejercicios
+          de la biblioteca.
         </p>
       </div>
 

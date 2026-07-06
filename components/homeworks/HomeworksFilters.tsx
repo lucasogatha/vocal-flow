@@ -21,7 +21,7 @@ export function HomeworksFilters({
         type="text"
         name="search"
         defaultValue={defaultSearch}
-        placeholder="Buscar homework por nome"
+        placeholder="Buscar homework por nombre"
         className="max-w-xs"
       />
 
@@ -30,10 +30,10 @@ export function HomeworksFilters({
         defaultValue={defaultStatus ?? ""}
         className="h-10 rounded-md border border-gray-300 bg-white px-3 text-sm focus:outline-none focus:ring-2 focus:ring-black"
       >
-        <option value="">Todos os status</option>
-        <option value="in_progress">Em andamento</option>
-        <option value="completed">Concluído</option>
-        <option value="overdue">Atrasado</option>
+        <option value="">Todos los estados</option>
+        <option value="in_progress">En progreso</option>
+        <option value="completed">Completado</option>
+        <option value="overdue">Vencido</option>
       </select>
 
       <select
@@ -41,7 +41,7 @@ export function HomeworksFilters({
         defaultValue={defaultStudentId ?? ""}
         className="h-10 rounded-md border border-gray-300 bg-white px-3 text-sm focus:outline-none focus:ring-2 focus:ring-black"
       >
-        <option value="">Todos os alunos</option>
+        <option value="">Todos los alumnos</option>
         {students.map((student) => (
           <option key={student.id} value={student.id}>
             {student.name}

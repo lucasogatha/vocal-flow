@@ -41,10 +41,10 @@ export default async function ExercisesPage({
   return (
     <div className="flex flex-col gap-6">
       <div>
-        <h1 className="text-2xl font-semibold">Biblioteca de Exercícios</h1>
+        <h1 className="text-2xl font-semibold">Biblioteca de Ejercicios</h1>
         <p className="text-sm text-gray-500">
-          30 exercícios nativos do VocalFlow, organizados por categoria e
-          nível.
+          30 ejercicios nativos de VocalFlow, organizados por categoría y
+          nivel.
         </p>
       </div>
 
@@ -55,7 +55,7 @@ export default async function ExercisesPage({
       />
 
       {exercises.length === 0 ? (
-        <EmptyState icon={Dumbbell} title="Nenhum exercício encontrado." />
+        <EmptyState icon={Dumbbell} title="Ningún ejercicio encontrado." />
       ) : (
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {exercises.map((exercise) => (

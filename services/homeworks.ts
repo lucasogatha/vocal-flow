@@ -41,7 +41,7 @@ export async function getWeeklyCompletionTrend(
   teacherId: string
 ): Promise<{ date: string; label: string; count: number }[]> {
   const supabase = createClient();
-  const dayLabels = ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sáb"];
+  const dayLabels = ["Dom", "Lun", "Mar", "Mié", "Jue", "Vie", "Sáb"];
 
   const today = new Date();
   today.setUTCHours(0, 0, 0, 0);
@@ -565,4 +565,3 @@ export async function completeHomeworkExercise(
 
   return { homeworkCompleted: allDone, homeworkId: link.homework_id };
 }
-

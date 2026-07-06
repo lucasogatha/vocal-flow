@@ -2,9 +2,9 @@ import Link from "next/link";
 import { LogoutButton } from "@/components/layout/LogoutButton";
 
 const ADMIN_NAV_LINKS = [
-  { href: "/admin", label: "Visão geral" },
-  { href: "/admin/teachers", label: "Professores" },
-  { href: "/admin/users", label: "Usuários" },
+  { href: "/admin", label: "Resumen" },
+  { href: "/admin/teachers", label: "Profesores" },
+  { href: "/admin/users", label: "Usuarios" },
   { href: "/admin/logs", label: "Logs" },
 ];
 

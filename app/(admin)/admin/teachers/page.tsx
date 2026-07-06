@@ -8,28 +8,28 @@ export default async function AdminTeachersPage() {
   return (
     <div className="flex flex-col gap-6">
       <div>
-        <h1 className="text-2xl font-semibold">Professores</h1>
+        <h1 className="text-2xl font-semibold">Profesores</h1>
         <p className="text-sm text-gray-500">
-          Todos os professores cadastrados no VocalFlow.
+          Todos los profesores registrados en VocalFlow.
         </p>
       </div>
 
       {teachers.length === 0 ? (
         <EmptyState
           icon={GraduationCap}
-          title="Nenhum professor cadastrado ainda."
+          title="Ningún profesor registrado todavía."
         />
       ) : (
         <div className="overflow-x-auto rounded-xl border border-gray-200 bg-white">
           <table className="w-full text-left text-sm">
             <thead>
               <tr className="border-b border-gray-100 text-xs uppercase tracking-wide text-gray-400">
-                <th className="px-4 py-3 font-medium">Nome</th>
-                <th className="px-4 py-3 font-medium">E-mail</th>
-                <th className="px-4 py-3 font-medium">Plano</th>
-                <th className="px-4 py-3 font-medium">Alunos</th>
+                <th className="px-4 py-3 font-medium">Nombre</th>
+                <th className="px-4 py-3 font-medium">Correo</th>
+                <th className="px-4 py-3 font-medium">Plan</th>
+                <th className="px-4 py-3 font-medium">Alumnos</th>
                 <th className="px-4 py-3 font-medium">Homeworks</th>
-                <th className="px-4 py-3 font-medium">Cadastro</th>
+                <th className="px-4 py-3 font-medium">Registro</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-100">
@@ -49,7 +49,7 @@ export default async function AdminTeachersPage() {
                     {teacher.homeworksCount}
                   </td>
                   <td className="px-4 py-3 text-gray-600">
-                    {new Date(teacher.createdAt).toLocaleDateString("pt-BR")}
+                    {new Date(teacher.createdAt).toLocaleDateString("es-419")}
                   </td>
                 </tr>
               ))}

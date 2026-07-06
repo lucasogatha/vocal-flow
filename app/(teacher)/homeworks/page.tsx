@@ -76,10 +76,10 @@ export default async function HomeworksPage({
     <div className="flex flex-col gap-6">
       <div>
         <h1 className="text-2xl font-semibold">
-          Acompanhamento de Homeworks
+          Seguimiento de Homeworks
         </h1>
         <p className="text-sm text-gray-500">
-          Todos os homeworks personalizados enviados aos seus alunos.
+          Todos los homeworks personalizados enviados a tus alumnos.
         </p>
       </div>
 
