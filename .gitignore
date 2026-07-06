@@ -42,3 +42,6 @@ supabase/.temp
 
 # shortcuts
 *.lnk
+
+# claude code local settings
+.claude/settings.local.json
