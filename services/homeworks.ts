@@ -212,10 +212,10 @@ type GetHomeworksOverviewParams = {
   pageSize?: number;
 };
 
-// Visão geral de todos os homeworks de um professor, com status derivado
-// (em andamento / concluído / atrasado) e progresso calculado a partir dos
-// exercícios. Filtro por status é aplicado em memória, já que "atrasado" e
-// "em andamento" não são valores armazenados diretamente no banco.
+// VisÃ£o geral de todos os homeworks de um professor, com status derivado
+// (em andamento / concluÃ­do / atrasado) e progresso calculado a partir dos
+// exercÃ­cios. Filtro por status Ã© aplicado em memÃ³ria, jÃ¡ que "atrasado" e
+// "em andamento" nÃ£o sÃ£o valores armazenados diretamente no banco.
 export async function getHomeworksOverviewForTeacher({
   teacherId,
   search,
@@ -302,9 +302,9 @@ export async function getHomeworksOverviewForTeacher({
   return { rows, totalCount };
 }
 
-// Cria um homework personalizado com os exercícios selecionados.
-// Se a criação dos vínculos com os exercícios falhar, desfaz o homework
-// para não deixar um registro vazio no banco.
+// Cria um homework personalizado com os exercÃ­cios selecionados.
+// Se a criaÃ§Ã£o dos vÃ­nculos com os exercÃ­cios falhar, desfaz o homework
+// para nÃ£o deixar um registro vazio no banco.
 export async function insertHomework(input: {
   teacherId: string;
   studentId: string;
@@ -351,8 +351,8 @@ export async function insertHomework(input: {
   return { error: null };
 }
 
-// Lista os homeworks personalizados de um aluno, com a contagem de exercícios
-// (usado na página do aluno, visão do professor).
+// Lista os homeworks personalizados de um aluno, com a contagem de exercÃ­cios
+// (usado na pÃ¡gina do aluno, visÃ£o do professor).
 export async function getHomeworksByStudent(
   studentId: string,
   teacherId: string
@@ -418,8 +418,8 @@ function mapHomeworkWithExercises(
     created_at: homework.created_at,
     completed_at: homework.completed_at,
     // A constraint de FK (on delete cascade) garante que uma linha de
-    // homework_exercises nunca sobrevive à exclusão do exercício
-    // referenciado — por isso é seguro tratar "exercises" como presente.
+    // homework_exercises nunca sobrevive Ã  exclusÃ£o do exercÃ­cio
+    // referenciado â€” por isso Ã© seguro tratar "exercises" como presente.
     exercises: items.map((row) => ({
       linkId: row.id,
       position: row.position,
@@ -429,7 +429,7 @@ function mapHomeworkWithExercises(
   };
 }
 
-// Busca um homework específico com todos os exercícios (visão do professor).
+// Busca um homework especÃ­fico com todos os exercÃ­cios (visÃ£o do professor).
 export async function getHomeworkWithExercises(
   id: string,
   teacherId: string
@@ -482,7 +482,7 @@ export async function getPendingHomeworksForStudent(
   return (data as Homework[]) ?? [];
 }
 
-// Busca um homework específico com exercícios, escopado ao próprio aluno.
+// Busca um homework especÃ­fico com exercÃ­cios, escopado ao prÃ³prio aluno.
 export async function getHomeworkForStudent(
   id: string,
   studentId: string
@@ -519,10 +519,10 @@ export type CompleteExerciseResult = {
   homeworkId: string | null;
 };
 
-// Marca um exercício específico (dentro de um homework) como concluído e,
-// se for o último exercício pendente, marca o homework inteiro também.
-// Retorna se o homework foi concluído nesta chamada (para quem chamar
-// decidir se dispara notificação, sem misturar essa responsabilidade
+// Marca um exercÃ­cio especÃ­fico (dentro de um homework) como concluÃ­do e,
+// se for o Ãºltimo exercÃ­cio pendente, marca o homework inteiro tambÃ©m.
+// Retorna se o homework foi concluÃ­do nesta chamada (para quem chamar
+// decidir se dispara notificaÃ§Ã£o, sem misturar essa responsabilidade
 // aqui na camada de dados).
 export async function completeHomeworkExercise(
   linkId: string
@@ -565,3 +565,4 @@ export async function completeHomeworkExercise(
 
   return { homeworkCompleted: allDone, homeworkId: link.homework_id };
 }
+
