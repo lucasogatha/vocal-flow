@@ -5,7 +5,6 @@ import { createClient } from "@/lib/supabase/server";
 // `supabase gen types` (não disponível neste projeto). Preferimos esse
 // escape hatch documentado a duplicar a mesma consulta de contagem em
 // cada service.
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 type QueryFilter = (query: any) => any;
 
 // Conta linhas de uma tabela aplicando os filtros passados. Elimina a

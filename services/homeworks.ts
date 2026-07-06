@@ -1,9 +1,194 @@
 import { createClient } from "@/lib/supabase/server";
+import { countByKey, countRows } from "@/lib/db-helpers";
 import type {
   Homework,
   HomeworkWithCount,
   HomeworkWithExercises,
 } from "@/types/homework";
+
+// Conta todos os homeworks já enviados por um professor (usado no dashboard).
+export async function countHomeworksByTeacher(
+  teacherId: string
+): Promise<number> {
+  return countRows("homeworks", (query) => query.eq("teacher_id", teacherId));
+}
+
+// Conta os homeworks concluídos de um professor (usado no dashboard).
+export async function countCompletedHomeworksByTeacher(
+  teacherId: string
+): Promise<number> {
+  return countRows("homeworks", (query) =>
+    query.eq("teacher_id", teacherId).eq("status", "completed")
+  );
+}
+
+// Conta os homeworks atrasados (pendentes com prazo vencido) de um professor.
+export async function countOverdueHomeworksByTeacher(
+  teacherId: string
+): Promise<number> {
+  const today = new Date().toISOString().split("T")[0];
+
+  return countRows("homeworks", (query) =>
+    query
+      .eq("teacher_id", teacherId)
+      .eq("status", "pending")
+      .lt("due_date", today)
+  );
+}
+
+// Conclusões por dia nos últimos 7 dias (usado no gráfico do dashboard).
+export async function getWeeklyCompletionTrend(
+  teacherId: string
+): Promise<{ date: string; label: string; count: number }[]> {
+  const supabase = createClient();
+  const dayLabels = ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sáb"];
+
+  const today = new Date();
+  today.setUTCHours(0, 0, 0, 0);
+
+  const start = new Date(today);
+  start.setUTCDate(start.getUTCDate() - 6);
+
+  const days = Array.from({ length: 7 }, (_, i) => {
+    const day = new Date(start);
+    day.setUTCDate(start.getUTCDate() + i);
+    return {
+      date: day.toISOString().split("T")[0],
+      label: dayLabels[day.getUTCDay()],
+      count: 0,
+    };
+  });
+
+  const { data, error } = await supabase
+    .from("homeworks")
+    .select("completed_at")
+    .eq("teacher_id", teacherId)
+    .eq("status", "completed")
+    .gte("completed_at", start.toISOString());
+
+  if (error) {
+    console.error(error);
+    return days;
+  }
+
+  for (const row of data ?? []) {
+    if (!row.completed_at) continue;
+    const dateKey = row.completed_at.split("T")[0];
+    const match = days.find((day) => day.date === dateKey);
+    if (match) match.count += 1;
+  }
+
+  return days;
+}
+
+// Próximos homeworks pendentes por data limite (usado no dashboard).
+export async function getUpcomingHomeworksForTeacher(
+  teacherId: string,
+  limit = 5
+): Promise<
+  { id: string; studentName: string; homeworkName: string; dueDate: string }[]
+> {
+  const supabase = createClient();
+  const today = new Date().toISOString().split("T")[0];
+
+  const { data, error } = await supabase
+    .from("homeworks")
+    .select("id, name, due_date, students(name)")
+    .eq("teacher_id", teacherId)
+    .eq("status", "pending")
+    .gte("due_date", today)
+    .order("due_date", { ascending: true })
+    .limit(limit);
+
+  if (error) {
+    console.error(error);
+    return [];
+  }
+
+  type UpcomingHomeworkRow = {
+    id: string;
+    name: string;
+    due_date: string;
+    students: { name: string } | null;
+  };
+
+  return ((data ?? []) as unknown as UpcomingHomeworkRow[]).map((row) => ({
+    id: row.id,
+    studentName: row.students?.name ?? "Aluno removido",
+    homeworkName: row.name,
+    dueDate: row.due_date,
+  }));
+}
+
+// Progresso de um aluno (homeworks concluídos / total) — usado na página do
+// aluno, visão do professor.
+export async function getProgressForStudent(
+  studentId: string,
+  teacherId: string
+): Promise<{ total: number; completed: number; percentage: number }> {
+  const [total, completed] = await Promise.all([
+    countRows("homeworks", (query) =>
+      query.eq("student_id", studentId).eq("teacher_id", teacherId)
+    ),
+    countRows("homeworks", (query) =>
+      query
+        .eq("student_id", studentId)
+        .eq("teacher_id", teacherId)
+        .eq("status", "completed")
+    ),
+  ]);
+
+  const percentage = total === 0 ? 0 : Math.round((completed / total) * 100);
+
+  return { total, completed, percentage };
+}
+
+// Conta os homeworks de vários alunos de uma vez (evita N+1 na lista de
+// alunos).
+export async function countHomeworksByStudentIds(
+  studentIds: string[],
+  teacherId: string
+): Promise<Record<string, number>> {
+  if (studentIds.length === 0) {
+    return {};
+  }
+
+  const supabase = createClient();
+
+  const { data, error } = await supabase
+    .from("homeworks")
+    .select("student_id")
+    .eq("teacher_id", teacherId)
+    .in("student_id", studentIds);
+
+  if (error) {
+    console.error(error);
+    return {};
+  }
+
+  return countByKey(data ?? [], "student_id");
+}
+
+// Histórico completo (pendentes + concluídos) de homeworks de um aluno,
+// usado no portal do aluno.
+export async function getHomeworkHistoryForStudent(
+  studentId: string
+): Promise<Homework[]> {
+  const supabase = createClient();
+
+  const { data, error } = await supabase
+    .from("homeworks")
+    .select("*")
+    .eq("student_id", studentId)
+    .order("created_at", { ascending: false });
+
+  if (error) {
+    console.error(error);
+    return [];
+  }
+
+  return (data as Homework[]) ?? [];
+}
 
 export type HomeworkOverviewStatus = "in_progress" | "completed" | "overdue";
 
@@ -270,7 +455,10 @@ export async function getHomeworkWithExercises(
     .eq("homework_id", id)
     .order("position", { ascending: true });
 
-  return mapHomeworkWithExercises(homework, items ?? []);
+  return mapHomeworkWithExercises(
+    homework,
+    (items ?? []) as unknown as HomeworkExerciseJoinRow[]
+  );
 }
 
 // Lista os homeworks pendentes de um aluno (usado no portal do aluno).
@@ -320,7 +508,10 @@ export async function getHomeworkForStudent(
     .eq("homework_id", id)
     .order("position", { ascending: true });
 
-  return mapHomeworkWithExercises(homework, items ?? []);
+  return mapHomeworkWithExercises(
+    homework,
+    (items ?? []) as unknown as HomeworkExerciseJoinRow[]
+  );
 }
 
 export type CompleteExerciseResult = {

@@ -1,13 +1,13 @@
 import { createServerClient, type CookieOptions } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
 
-const TEACHER_ROUTES = ["/dashboard", "/students", "/lessons", "/exercises", "/homeworks", "/pricing"];
+const TEACHER_ROUTES = ["/dashboard", "/students", "/exercises", "/homeworks", "/pricing"];
 const STUDENT_ROUTES = ["/student-portal"];
 const ADMIN_ROUTES = ["/admin"];
 // Rotas do professor que exigem assinatura ativa. "/pricing" fica de fora
 // de propósito: é para lá que redirecionamos quem está bloqueado, então
 // incluí-la geraria um loop de redirecionamento.
-const SUBSCRIPTION_GATED_ROUTES = ["/dashboard", "/students", "/lessons", "/exercises", "/homeworks"];
+const SUBSCRIPTION_GATED_ROUTES = ["/dashboard", "/students", "/exercises", "/homeworks"];
 
 // Protege as rotas autenticadas, evita que um usuário logado acesse as
 // telas de login/registro de novo, e garante que professor e aluno cada
@@ -123,7 +123,6 @@ export const config = {
     "/register-student",
     "/dashboard/:path*",
     "/students/:path*",
-    "/lessons/:path*",
     "/exercises/:path*",
     "/homeworks/:path*",
     "/pricing/:path*",

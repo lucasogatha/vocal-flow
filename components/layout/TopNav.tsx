@@ -7,7 +7,6 @@ import { LogoutButton } from "@/components/layout/LogoutButton";
 const NAV_LINKS = [
   { href: "/dashboard", label: "Dashboard" },
   { href: "/students", label: "Alunos" },
-  { href: "/lessons", label: "Biblioteca" },
   { href: "/exercises", label: "Exercícios" },
   { href: "/homeworks", label: "Homeworks" },
   { href: "/pricing", label: "Planos" },

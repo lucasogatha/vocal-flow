@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Users } from "lucide-react";
 import { getStudentsByTeacher } from "@/services/students";
-import { countAssignmentsByStudentIds } from "@/services/assignments";
+import { countHomeworksByStudentIds } from "@/services/homeworks";
 import { StudentCard } from "@/components/students/StudentCard";
 import { StudentSearch } from "@/components/students/StudentSearch";
 import { Pagination } from "@/components/ui/pagination";
@@ -35,7 +35,7 @@ export default async function StudentsPage({
   const totalPages = Math.max(1, Math.ceil(totalCount / PAGE_SIZE));
 
   const homeworksCountByStudent = user
-    ? await countAssignmentsByStudentIds(
+    ? await countHomeworksByStudentIds(
         students.map((student) => student.id),
         user.id
       )

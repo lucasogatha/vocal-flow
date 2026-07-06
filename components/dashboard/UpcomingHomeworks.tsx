@@ -1,18 +1,20 @@
-type UpcomingLesson = {
+type UpcomingHomework = {
   id: string;
   studentName: string;
-  lessonTitle: string;
+  homeworkName: string;
   dueDate: string;
 };
 
-type UpcomingLessonsProps = {
-  items: UpcomingLesson[];
+type UpcomingHomeworksProps = {
+  items: UpcomingHomework[];
 };
 
-export function UpcomingLessons({ items }: UpcomingLessonsProps) {
+export function UpcomingHomeworks({ items }: UpcomingHomeworksProps) {
   if (items.length === 0) {
     return (
-      <p className="text-sm text-gray-500">Nenhuma aula com prazo próximo.</p>
+      <p className="text-sm text-gray-500">
+        Nenhum homework com prazo próximo.
+      </p>
     );
   }
 
@@ -25,7 +27,7 @@ export function UpcomingLessons({ items }: UpcomingLessonsProps) {
         >
           <div className="flex flex-col">
             <span className="text-sm font-medium text-gray-900">
-              {item.lessonTitle}
+              {item.homeworkName}
             </span>
             <span className="text-xs text-gray-500">{item.studentName}</span>
           </div>

@@ -5,9 +5,8 @@ import { useRouter } from "next/navigation";
 
 // Encapsula o padrão repetido nos botões de "concluir": disparar uma
 // Server Action, mostrar uma animação de sucesso, e então atualizar a
-// página para refletir dados frescos do servidor. Extraído porque
-// CompleteHomeworkButton e CompleteExerciseButton reimplementavam
-// exatamente essa mesma lógica, mudando só a action chamada.
+// página para refletir dados frescos do servidor. Usado por
+// CompleteExerciseButton.
 export function useCompleteAction(
   action: () => Promise<void>,
   refreshDelayMs = 1200

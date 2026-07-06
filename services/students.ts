@@ -55,7 +55,7 @@ export async function countStudentsByTeacher(
 }
 
 // Conta os alunos de um professor que nunca receberam nenhum homework.
-export async function countStudentsWithoutAssignments(
+export async function countStudentsWithoutHomeworks(
   teacherId: string
 ): Promise<number> {
   const supabase = createClient();
@@ -74,13 +74,13 @@ export async function countStudentsWithoutAssignments(
     return 0;
   }
 
-  const { data: assignedRows, error: assignmentsError } = await supabase
-    .from("assignments")
+  const { data: assignedRows, error: homeworksError } = await supabase
+    .from("homeworks")
     .select("student_id")
     .eq("teacher_id", teacherId);
 
-  if (assignmentsError) {
-    console.error(assignmentsError);
+  if (homeworksError) {
+    console.error(homeworksError);
     return allStudents.length;
   }
 

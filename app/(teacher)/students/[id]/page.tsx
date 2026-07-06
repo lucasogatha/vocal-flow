@@ -3,26 +3,18 @@ import { notFound } from "next/navigation";
 import { Send, CheckCircle2, AlertTriangle, ClipboardList } from "lucide-react";
 import { EmptyState } from "@/components/ui/empty-state";
 import { getStudentById } from "@/services/students";
-import {
-  getAssignmentsByStudent,
-  getProgressForStudent,
-} from "@/services/assignments";
-import { buildTimelineEvents, getAssignmentCounts } from "@/lib/assignment-status";
-import { getHomeworksByStudent } from "@/services/homeworks";
+import { getHomeworksByStudent, getProgressForStudent } from "@/services/homeworks";
+import { getHomeworkCounts } from "@/lib/homework-status";
 import { Card } from "@/components/ui/card";
 import { StatCard } from "@/components/dashboard/StatCard";
 import { Progress } from "@/components/ui/progress";
 import { buttonVariants } from "@/components/ui/button";
-import { Timeline } from "@/components/students/Timeline";
-import { TimelineFilters } from "@/components/students/TimelineFilters";
 import { getCurrentUser } from "@/lib/auth-guard";
 
 export default async function StudentDetailPage({
   params,
-  searchParams,
 }: {
   params: { id: string };
-  searchParams: { filter?: string };
 }) {
   const user = await getCurrentUser();
 
@@ -36,19 +28,12 @@ export default async function StudentDetailPage({
     notFound();
   }
 
-  const [assignments, progress, homeworks] = await Promise.all([
-    getAssignmentsByStudent(student.id, user.id),
-    getProgressForStudent(student.id, user.id),
+  const [homeworks, progress] = await Promise.all([
     getHomeworksByStudent(student.id, user.id),
+    getProgressForStudent(student.id, user.id),
   ]);
 
-  const counts = getAssignmentCounts(assignments);
-  const allEvents = buildTimelineEvents(assignments);
-  const activeFilter = searchParams.filter ?? "all";
-  const events =
-    activeFilter === "all"
-      ? allEvents
-      : allEvents.filter((event) => event.type === activeFilter);
+  const counts = getHomeworkCounts(homeworks);
 
   const memberSince = new Date(student.created_at).toLocaleDateString(
     "pt-BR"
@@ -110,19 +95,19 @@ export default async function StudentDetailPage({
 
       <Card className="flex flex-col gap-4">
         <div className="flex flex-wrap items-center justify-between gap-3">
-          <h2 className="text-lg font-semibold">Homeworks personalizados</h2>
+          <h2 className="text-lg font-semibold">Homeworks</h2>
           <Link
             href={`/students/${student.id}/homework/new`}
             className={buttonVariants()}
           >
-            Novo Homework
+            Enviar Homework
           </Link>
         </div>
 
         {homeworks.length === 0 ? (
           <EmptyState
             icon={ClipboardList}
-            title="Nenhum homework personalizado criado ainda."
+            title="Nenhum homework enviado ainda."
           />
         ) : (
           <ul className="flex flex-col gap-2">
@@ -151,22 +136,6 @@ export default async function StudentDetailPage({
             ))}
           </ul>
         )}
-      </Card>
-
-      <Card className="flex flex-col gap-4">
-        <div className="flex flex-wrap items-center justify-between gap-3">
-          <h2 className="text-lg font-semibold">Linha do tempo</h2>
-          <Link
-            href={`/students/${student.id}/assignment/new`}
-            className={buttonVariants()}
-          >
-            Enviar Homework
-          </Link>
-        </div>
-
-        <TimelineFilters studentId={student.id} active={activeFilter} />
-
-        <Timeline events={events} />
       </Card>
     </div>
   );

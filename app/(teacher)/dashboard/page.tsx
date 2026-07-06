@@ -2,19 +2,19 @@ import Link from "next/link";
 import { Users, Send, CheckCircle2, Percent, UserX, AlertTriangle } from "lucide-react";
 import { StatCard } from "@/components/dashboard/StatCard";
 import { ProgressChart } from "@/components/dashboard/ProgressChart";
-import { UpcomingLessons } from "@/components/dashboard/UpcomingLessons";
+import { UpcomingHomeworks } from "@/components/dashboard/UpcomingHomeworks";
 import { Card } from "@/components/ui/card";
 import {
   countStudentsByTeacher,
-  countStudentsWithoutAssignments,
+  countStudentsWithoutHomeworks,
 } from "@/services/students";
 import {
-  countAssignmentsByTeacher,
-  countCompletedAssignmentsByTeacher,
-  countOverdueAssignmentsByTeacher,
+  countHomeworksByTeacher,
+  countCompletedHomeworksByTeacher,
+  countOverdueHomeworksByTeacher,
   getWeeklyCompletionTrend,
-  getUpcomingAssignmentsForTeacher,
-} from "@/services/assignments";
+  getUpcomingHomeworksForTeacher,
+} from "@/services/homeworks";
 import { ensureSubscription } from "@/services/subscriptions";
 import { getCurrentUser } from "@/lib/auth-guard";
 
@@ -30,7 +30,7 @@ export default async function DashboardPage() {
   let overdueCount = 0;
   let studentsWithoutActivity = 0;
   let weeklyTrend: Awaited<ReturnType<typeof getWeeklyCompletionTrend>> = [];
-  let upcoming: Awaited<ReturnType<typeof getUpcomingAssignmentsForTeacher>> =
+  let upcoming: Awaited<ReturnType<typeof getUpcomingHomeworksForTeacher>> =
     [];
   let subscription: Awaited<ReturnType<typeof ensureSubscription>> = null;
 
@@ -46,12 +46,12 @@ export default async function DashboardPage() {
       subscription,
     ] = await Promise.all([
       countStudentsByTeacher(user.id),
-      countAssignmentsByTeacher(user.id),
-      countCompletedAssignmentsByTeacher(user.id),
-      countOverdueAssignmentsByTeacher(user.id),
-      countStudentsWithoutAssignments(user.id),
+      countHomeworksByTeacher(user.id),
+      countCompletedHomeworksByTeacher(user.id),
+      countOverdueHomeworksByTeacher(user.id),
+      countStudentsWithoutHomeworks(user.id),
       getWeeklyCompletionTrend(user.id),
-      getUpcomingAssignmentsForTeacher(user.id),
+      getUpcomingHomeworksForTeacher(user.id),
       ensureSubscription(user.id),
     ]);
   }
@@ -130,9 +130,9 @@ export default async function DashboardPage() {
 
         <Card className="flex flex-col gap-2">
           <h2 className="text-sm font-semibold text-gray-900">
-            Próximas aulas
+            Próximos Homeworks
           </h2>
-          <UpcomingLessons items={upcoming} />
+          <UpcomingHomeworks items={upcoming} />
         </Card>
       </div>
     </div>
