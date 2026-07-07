@@ -26,7 +26,7 @@ export function ExerciseFilters({
       <select
         name="category"
         defaultValue={defaultCategory ?? ""}
-        className="h-10 rounded-md border border-gray-300 bg-white px-3 text-sm focus:outline-none focus:ring-2 focus:ring-black"
+        className="h-10 rounded-md border border-border bg-card px-3 text-sm focus:outline-none focus:ring-2 focus:ring-accent"
       >
         <option value="">Todas las categorías</option>
         {EXERCISE_CATEGORIES.map((category) => (
@@ -39,7 +39,7 @@ export function ExerciseFilters({
       <select
         name="level"
         defaultValue={defaultLevel ?? ""}
-        className="h-10 rounded-md border border-gray-300 bg-white px-3 text-sm focus:outline-none focus:ring-2 focus:ring-black"
+        className="h-10 rounded-md border border-border bg-card px-3 text-sm focus:outline-none focus:ring-2 focus:ring-accent"
       >
         <option value="">Todos los niveles</option>
         {EXERCISE_LEVELS.map((level) => (

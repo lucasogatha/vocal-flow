@@ -1,11 +1,11 @@
 -- Seeder de la Biblioteca de Ejercicios nativa de VocalFlow.
--- Idempotente: puede ejecutarse más de una vez sin duplicar datos,
--- gracias a ON CONFLICT (title) DO NOTHING.
+-- Idempotente: puede ejecutarse más de una vez sin duplicar datos.
 --
--- Nota: si esta base de datos ya tenía los 30 ejercicios en portugués
--- (versión anterior del producto), use la migration
--- 0013_translate_exercises_to_spanish.sql en su lugar — ella actualiza
--- las filas existentes preservando su id, en vez de duplicar contenido.
+-- Desde la migration 0018, cada profesor tiene su PROPIA copia de la
+-- biblioteca. Este seed solo inserta el "molde" (teacher_id nulo), que se
+-- copia automáticamente a cada profesor la primera vez que inicia sesión
+-- (ver ensureExerciseLibrary en services/exercises.ts). No inserta nada
+-- directamente en la cuenta de ningún profesor.
 
 insert into exercises (title, category, objective, description, duration_minutes, level, tags, order_index) values
 
@@ -79,4 +79,4 @@ insert into exercises (title, category, objective, description, duration_minutes
 
 ($$Texto Cantado con Articulación Exagerada$$, 'Dicción', $$Aplicar la dicción trabajada en un contexto musical real, manteniendo claridad incluso en pasajes rápidos o agudos.$$, $$Elige un fragmento de una canción del repertorio del alumno y cántalo dos veces: primero exagerando a propósito cada consonante y vocal, luego normalmente — pero buscando mantener parte de esa claridad conquistada. Graba las dos versiones y compara la inteligibilidad del texto entre ellas.$$, 15, 'Avanzado', array['dicción','repertorio','articulación','avanzado'], 30)
 
-on conflict (title) do nothing;
+on conflict (title) where teacher_id is null do nothing;

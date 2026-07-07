@@ -16,10 +16,10 @@ export function HomeworksTable({ rows }: { rows: HomeworkOverviewRow[] }) {
   }
 
   return (
-    <div className="overflow-x-auto rounded-xl border border-gray-200 bg-white">
+    <div className="overflow-x-auto rounded-xl border border-border bg-card">
       <table className="w-full text-left text-sm">
         <thead>
-          <tr className="border-b border-gray-100 text-xs uppercase tracking-wide text-gray-400">
+          <tr className="border-b border-border text-xs uppercase tracking-wide text-muted-foreground">
             <th className="px-4 py-3 font-medium">Homework</th>
             <th className="px-4 py-3 font-medium">Alumno</th>
             <th className="px-4 py-3 font-medium">Ejercicios</th>
@@ -28,14 +28,14 @@ export function HomeworksTable({ rows }: { rows: HomeworkOverviewRow[] }) {
             <th className="px-4 py-3 font-medium">Status</th>
           </tr>
         </thead>
-        <tbody className="divide-y divide-gray-100">
+        <tbody className="divide-y divide-border">
           {rows.map((row) => (
             <tr key={row.id}>
-              <td className="px-4 py-3 font-medium text-gray-900">
+              <td className="px-4 py-3 font-medium text-foreground">
                 {row.name}
               </td>
-              <td className="px-4 py-3 text-gray-600">{row.studentName}</td>
-              <td className="px-4 py-3 text-gray-600">
+              <td className="px-4 py-3 text-muted-foreground">{row.studentName}</td>
+              <td className="px-4 py-3 text-muted-foreground">
                 {row.totalExercises}
               </td>
               <td className="px-4 py-3">
@@ -43,12 +43,12 @@ export function HomeworksTable({ rows }: { rows: HomeworkOverviewRow[] }) {
                   <div className="w-20">
                     <Progress value={row.percentage} />
                   </div>
-                  <span className="text-xs text-gray-500">
+                  <span className="text-xs text-muted-foreground">
                     {row.percentage}%
                   </span>
                 </div>
               </td>
-              <td className="px-4 py-3 text-gray-600">
+              <td className="px-4 py-3 text-muted-foreground">
                 {new Date(row.dueDate + "T00:00:00").toLocaleDateString(
                   "es-419"
                 )}

@@ -40,7 +40,7 @@ export default async function StudentHomeworkPage({
     <div className="mx-auto flex max-w-md flex-col gap-6 px-4 py-10">
       <Link
         href="/student-portal"
-        className="w-fit text-sm text-gray-500 hover:text-black"
+        className="w-fit text-sm text-muted-foreground hover:text-foreground"
       >
         ← Volver
       </Link>
@@ -48,17 +48,17 @@ export default async function StudentHomeworkPage({
       <div>
         <h1 className="text-2xl font-semibold">{homework.name}</h1>
         {homework.objective && (
-          <p className="text-sm text-gray-500">{homework.objective}</p>
+          <p className="text-sm text-muted-foreground">{homework.objective}</p>
         )}
       </div>
 
       <Card className="flex flex-col gap-3">
         <Progress value={percentage} />
-        <p className="text-sm text-gray-500">
+        <p className="text-sm text-muted-foreground">
           {completed} de {total} ejercicios completados ({percentage}%)
         </p>
         {homework.status === "completed" && (
-          <p className="text-sm font-medium text-green-700">
+          <p className="text-sm font-medium text-green-700 dark:text-green-400">
             ¡Homework completado! 🎉
           </p>
         )}
@@ -68,16 +68,16 @@ export default async function StudentHomeworkPage({
         {homework.exercises.map((item) => (
           <Card key={item.linkId} className="flex flex-col gap-2">
             <span className="font-medium">{item.exercise.title}</span>
-            <p className="text-sm text-gray-500">
+            <p className="text-sm text-muted-foreground">
               {item.exercise.description}
             </p>
-            <span className="text-xs text-gray-400">
+            <span className="text-xs text-muted-foreground">
               {item.exercise.duration_minutes} min
             </span>
 
             {item.completedAt ? (
-              <div className="flex items-center gap-2 text-sm font-medium text-green-700">
-                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-green-100">
+              <div className="flex items-center gap-2 text-sm font-medium text-green-700 dark:text-green-400">
+                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-green-100 dark:bg-green-950">
                   ✓
                 </span>
                 Completado

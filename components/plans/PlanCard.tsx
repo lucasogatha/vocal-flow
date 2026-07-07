@@ -20,19 +20,19 @@ export function PlanCard({ plan, isCurrent, cta }: PlanCardProps) {
       )}
     >
       <div className="flex flex-col gap-1">
-        <h3 className="text-lg font-semibold text-gray-900">{plan.name}</h3>
-        <p className="text-3xl font-bold text-gray-900">
+        <h3 className="text-lg font-semibold text-foreground">{plan.name}</h3>
+        <p className="text-3xl font-bold text-foreground">
           US$ {price}
-          <span className="text-sm font-normal text-gray-500">/mes</span>
+          <span className="text-sm font-normal text-muted-foreground">/mes</span>
         </p>
-        <p className="text-sm text-gray-500">
+        <p className="text-sm text-muted-foreground">
           {plan.student_limit
             ? `Hasta ${plan.student_limit} alumnos`
             : "Alumnos ilimitados"}
         </p>
       </div>
 
-      <ul className="flex flex-col gap-2 text-sm text-gray-600">
+      <ul className="flex flex-col gap-2 text-sm text-muted-foreground">
         {plan.features.map((feature) => (
           <li key={feature} className="flex items-center gap-2">
             <Check className="h-4 w-4 shrink-0 text-accent" />

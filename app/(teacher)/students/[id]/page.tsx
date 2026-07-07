@@ -9,6 +9,7 @@ import { Card } from "@/components/ui/card";
 import { StatCard } from "@/components/dashboard/StatCard";
 import { Progress } from "@/components/ui/progress";
 import { buttonVariants } from "@/components/ui/button";
+import { DeleteStudentButton } from "@/components/students/DeleteStudentButton";
 import { getCurrentUser } from "@/lib/auth-guard";
 
 export default async function StudentDetailPage({
@@ -52,18 +53,23 @@ export default async function StudentDetailPage({
     <div className="flex flex-col gap-6">
       <Link
         href="/students"
-        className="w-fit text-sm text-gray-500 hover:text-black"
+        className="w-fit text-sm text-muted-foreground hover:text-foreground"
       >
         ← Volver a Mis Alumnos
       </Link>
 
       <Card className="flex flex-col gap-1">
-        <h1 className="text-2xl font-semibold">{student.name}</h1>
-        <p className="text-sm text-gray-500">{student.email}</p>
-        {student.phone && (
-          <p className="text-sm text-gray-500">{student.phone}</p>
-        )}
-        <div className="mt-2 flex flex-wrap gap-4 text-xs text-gray-400">
+        <div className="flex flex-wrap items-start justify-between gap-3">
+          <div>
+            <h1 className="text-2xl font-semibold">{student.name}</h1>
+            <p className="text-sm text-muted-foreground">{student.email}</p>
+            {student.phone && (
+              <p className="text-sm text-muted-foreground">{student.phone}</p>
+            )}
+          </div>
+          <DeleteStudentButton studentId={student.id} studentName={student.name} />
+        </div>
+        <div className="mt-2 flex flex-wrap gap-4 text-xs text-muted-foreground">
           <span>Alumno desde {memberSince}</span>
           <span>Último acceso: {lastSeenLabel}</span>
         </div>
@@ -86,7 +92,7 @@ export default async function StudentDetailPage({
       <Card className="flex flex-col gap-3">
         <h2 className="text-lg font-semibold">Progreso</h2>
         <Progress value={progress.percentage} />
-        <p className="text-sm text-gray-500">
+        <p className="text-sm text-muted-foreground">
           {progress.total === 0
             ? "Ningún homework enviado todavía."
             : `${progress.completed} de ${progress.total} homeworks completados (${progress.percentage}%)`}
@@ -114,11 +120,11 @@ export default async function StudentDetailPage({
             {homeworks.map((homework) => (
               <li
                 key={homework.id}
-                className="flex items-center justify-between rounded-md border border-gray-200 px-3 py-2 text-sm"
+                className="flex items-center justify-between rounded-md border border-border px-3 py-2 text-sm"
               >
                 <div className="flex flex-col">
                   <span className="font-medium">{homework.name}</span>
-                  <span className="text-gray-500">
+                  <span className="text-muted-foreground">
                     {homework.exerciseCount}{" "}
                     {homework.exerciseCount === 1
                       ? "ejercicio"
@@ -129,7 +135,7 @@ export default async function StudentDetailPage({
                     ).toLocaleDateString("es-419")}
                   </span>
                 </div>
-                <span className="text-xs text-gray-500">
+                <span className="text-xs text-muted-foreground">
                   {homework.status === "completed" ? "Completado" : "Pendiente"}
                 </span>
               </li>

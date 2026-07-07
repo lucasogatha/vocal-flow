@@ -28,11 +28,11 @@ export function ConfirmDialog({
 
       {isOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4">
-          <div className="flex w-full max-w-sm flex-col gap-4 rounded-xl bg-white p-6 shadow-lg">
+          <div className="flex w-full max-w-sm flex-col gap-4 rounded-xl bg-card p-6 shadow-lg">
             <div className="flex flex-col gap-1">
-              <h2 className="text-lg font-semibold text-gray-900">{title}</h2>
+              <h2 className="text-lg font-semibold text-foreground">{title}</h2>
               {description && (
-                <p className="text-sm text-gray-500">{description}</p>
+                <p className="text-sm text-muted-foreground">{description}</p>
               )}
             </div>
 

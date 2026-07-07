@@ -12,12 +12,12 @@ type PlanLimitModalProps = {
 export function PlanLimitModal({ limit, onClose }: PlanLimitModalProps) {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4">
-      <div className="flex w-full max-w-sm flex-col gap-4 rounded-xl bg-white p-6 shadow-lg">
+      <div className="flex w-full max-w-sm flex-col gap-4 rounded-xl bg-card p-6 shadow-lg">
         <div className="flex flex-col gap-1">
-          <h2 className="text-lg font-semibold text-gray-900">
+          <h2 className="text-lg font-semibold text-foreground">
             Límite del plan Starter alcanzado
           </h2>
-          <p className="text-sm text-gray-500">
+          <p className="text-sm text-muted-foreground">
             Tu plan permite hasta {limit} alumnos registrados. Actualiza
             al Plan Pro para registrar alumnos ilimitados.
           </p>

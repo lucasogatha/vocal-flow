@@ -37,7 +37,7 @@ export function ProgressChart({ data }: ProgressChartProps) {
               width={BAR_WIDTH}
               height={CHART_HEIGHT}
               rx={6}
-              className="fill-gray-100"
+              className="fill-muted"
             />
             {day.count > 0 && (
               <rect
@@ -54,7 +54,7 @@ export function ProgressChart({ data }: ProgressChartProps) {
                 x={x + BAR_WIDTH / 2}
                 y={y - 6}
                 textAnchor="middle"
-                className="fill-gray-500 text-[10px] font-medium"
+                className="fill-muted-foreground text-[10px] font-medium"
               >
                 {day.count}
               </text>
@@ -63,7 +63,7 @@ export function ProgressChart({ data }: ProgressChartProps) {
               x={x + BAR_WIDTH / 2}
               y={CHART_HEIGHT + 16}
               textAnchor="middle"
-              className="fill-gray-400 text-[10px]"
+              className="fill-muted-foreground text-[10px]"
             >
               {day.label}
             </text>

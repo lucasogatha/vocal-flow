@@ -19,10 +19,10 @@ export function StudentCard({
     <Card className="flex flex-col gap-3">
       <div className="flex flex-col gap-1">
         <span className="font-medium">{student.name}</span>
-        <span className="text-sm text-gray-500">{student.email}</span>
+        <span className="text-sm text-muted-foreground">{student.email}</span>
       </div>
 
-      <div className="flex flex-col gap-1 text-sm text-gray-500">
+      <div className="flex flex-col gap-1 text-sm text-muted-foreground">
         <span>{homeworksCount} homeworks enviados</span>
         <span>Última actividad: {lastActivityLabel}</span>
       </div>

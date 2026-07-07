@@ -55,7 +55,7 @@ export default async function StudentsPage({
       <div className="flex flex-wrap items-center justify-between gap-4">
         <div>
           <h1 className="text-2xl font-semibold">Mis Alumnos</h1>
-          <p className="text-sm text-gray-500">
+          <p className="text-sm text-muted-foreground">
             Gestiona los alumnos de tu estudio.
           </p>
         </div>

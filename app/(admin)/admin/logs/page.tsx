@@ -9,7 +9,7 @@ export default async function AdminLogsPage() {
     <div className="flex flex-col gap-6">
       <div>
         <h1 className="text-2xl font-semibold">Logs</h1>
-        <p className="text-sm text-gray-500">
+        <p className="text-sm text-muted-foreground">
           Eventos recientes registrados en el sistema. Cubre los
           principales eventos de negocio, no es una auditoría exhaustiva de
           cada acción.
@@ -19,31 +19,31 @@ export default async function AdminLogsPage() {
       {logs.length === 0 ? (
         <EmptyState icon={History} title="Ningún log registrado todavía." />
       ) : (
-        <div className="overflow-x-auto rounded-xl border border-gray-200 bg-white">
+        <div className="overflow-x-auto rounded-xl border border-border bg-card">
           <table className="w-full text-left text-sm">
             <thead>
-              <tr className="border-b border-gray-100 text-xs uppercase tracking-wide text-gray-400">
+              <tr className="border-b border-border text-xs uppercase tracking-wide text-muted-foreground">
                 <th className="px-4 py-3 font-medium">Evento</th>
                 <th className="px-4 py-3 font-medium">Actor</th>
                 <th className="px-4 py-3 font-medium">Detalles</th>
                 <th className="px-4 py-3 font-medium">Fecha</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-gray-100">
+            <tbody className="divide-y divide-border">
               {logs.map((log) => (
                 <tr key={log.id}>
-                  <td className="px-4 py-3 font-medium text-gray-900">
+                  <td className="px-4 py-3 font-medium text-foreground">
                     {log.event_type}
                   </td>
-                  <td className="px-4 py-3 text-gray-600">
+                  <td className="px-4 py-3 text-muted-foreground">
                     {log.actor_email ?? "—"}
                   </td>
-                  <td className="px-4 py-3 text-gray-500">
+                  <td className="px-4 py-3 text-muted-foreground">
                     {Object.keys(log.metadata).length > 0
                       ? JSON.stringify(log.metadata)
                       : "—"}
                   </td>
-                  <td className="px-4 py-3 text-gray-600">
+                  <td className="px-4 py-3 text-muted-foreground">
                     {new Date(log.created_at).toLocaleString("es-419")}
                   </td>
                 </tr>

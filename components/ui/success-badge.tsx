@@ -11,11 +11,11 @@ export function SuccessBadge({ label, visible }: SuccessBadgeProps) {
   return (
     <div
       className={cn(
-        "flex items-center gap-2 text-sm font-medium text-green-700 transition-all duration-300",
+        "flex items-center gap-2 text-sm font-medium text-green-700 transition-all duration-300 dark:text-green-400",
         visible ? "translate-y-0 opacity-100" : "translate-y-1 opacity-0"
       )}
     >
-      <span className="flex h-6 w-6 items-center justify-center rounded-full bg-green-100">
+      <span className="flex h-6 w-6 items-center justify-center rounded-full bg-green-100 dark:bg-green-950">
         ✓
       </span>
       {label}

@@ -6,6 +6,8 @@ import { requireTeacher } from "@/lib/auth-guard";
 import { studentSchema } from "@/validations/student.schema";
 import { insertStudent } from "@/services/students";
 import { getStudentLimitStatus } from "@/services/subscriptions";
+import { getProfileById } from "@/services/profiles";
+import { sendStudentInvitedEmail } from "@/services/notifications";
 import { logEvent } from "@/services/logs";
 
 export type CreateStudentState = {
@@ -69,6 +71,21 @@ export async function createStudentAction(
       message: "No fue posible registrar al alumno. Intenta de nuevo.",
     };
   }
+
+  // Convida o aluno por e-mail a ativar a própria conta. Nunca bloqueia o
+  // fluxo em caso de falha (ver services/notifications.ts).
+  const teacherProfile = await getProfileById(auth.userId);
+  await sendStudentInvitedEmail({
+    to: parsed.data.email,
+    studentName: parsed.data.name,
+    teacherName: teacherProfile?.name ?? "Tu profesor",
+  });
+
+  await logEvent(
+    "student_invited",
+    { id: auth.userId },
+    { studentEmail: parsed.data.email }
+  );
 
   revalidatePath("/students");
   redirect(

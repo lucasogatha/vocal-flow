@@ -15,7 +15,7 @@ export default async function AdminOverviewPage() {
     <div className="flex flex-col gap-8">
       <div>
         <h1 className="text-2xl font-semibold">Panel Administrativo</h1>
-        <p className="text-sm text-gray-500">
+        <p className="text-sm text-muted-foreground">
           Resumen de todo VocalFlow.
         </p>
       </div>
@@ -41,16 +41,16 @@ export default async function AdminOverviewPage() {
 
       <Card className="flex flex-col gap-3">
         <h2 className="text-lg font-semibold">Planes</h2>
-        <div className="flex gap-6 text-sm text-gray-600">
+        <div className="flex gap-6 text-sm text-muted-foreground">
           <span>
             Starter:{" "}
-            <strong className="text-gray-900">
+            <strong className="text-foreground">
               {overview.planCounts.starter}
             </strong>
           </span>
           <span>
             Pro:{" "}
-            <strong className="text-gray-900">
+            <strong className="text-foreground">
               {overview.planCounts.pro}
             </strong>
           </span>
@@ -76,8 +76,8 @@ export default async function AdminOverviewPage() {
         ) : (
           <ul className="flex flex-col gap-2">
             {recentLogs.map((log) => (
-              <li key={log.id} className="text-sm text-gray-600">
-                <span className="font-medium text-gray-900">
+              <li key={log.id} className="text-sm text-muted-foreground">
+                <span className="font-medium text-foreground">
                   {log.event_type}
                 </span>{" "}
                 — {log.actor_email ?? "sistema"} ·{" "}

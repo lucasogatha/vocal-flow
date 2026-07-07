@@ -1,6 +1,7 @@
 import { getResendClient, EMAIL_FROM, SITE_URL } from "@/lib/resend";
 import HomeworkReceivedEmail from "@/emails/homework-received";
 import HomeworkCompletedEmail from "@/emails/homework-completed";
+import StudentInvitedEmail from "@/emails/student-invited";
 
 // Todas as funções deste arquivo NUNCA lançam erro para quem as chama —
 // falha de e-mail (chave ausente, Resend fora do ar, etc.) não pode
@@ -68,5 +69,37 @@ export async function sendHomeworkCompletedEmail(params: {
     });
   } catch (error) {
     console.error("Fallo al enviar correo de finalización:", error);
+  }
+}
+
+// Enviado quando um professor cadastra um novo aluno — convida o aluno a
+// ativar a própria conta em /register-student, usando o mesmo e-mail.
+export async function sendStudentInvitedEmail(params: {
+  to: string;
+  studentName: string;
+  teacherName: string;
+}): Promise<void> {
+  const resend = getResendClient();
+
+  if (!resend) {
+    console.warn(
+      "RESEND_API_KEY no configurada — correo de invitación no enviado."
+    );
+    return;
+  }
+
+  try {
+    await resend.emails.send({
+      from: EMAIL_FROM,
+      to: params.to,
+      subject: `${params.teacherName} te invitó a VocalFlow`,
+      react: StudentInvitedEmail({
+        studentName: params.studentName,
+        teacherName: params.teacherName,
+        activationUrl: `${SITE_URL}/register-student`,
+      }),
+    });
+  } catch (error) {
+    console.error("Fallo al enviar correo de invitación:", error);
   }
 }

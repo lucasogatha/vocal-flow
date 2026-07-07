@@ -16,7 +16,7 @@ export default function StudentDetailLoading() {
         {Array.from({ length: 3 }).map((_, index) => (
           <div
             key={index}
-            className="flex items-center gap-4 rounded-xl border border-gray-200 bg-white p-5"
+            className="flex items-center gap-4 rounded-xl border border-border bg-card p-5"
           >
             <Skeleton className="h-10 w-10 shrink-0 rounded-lg" />
             <div className="flex flex-col gap-2">

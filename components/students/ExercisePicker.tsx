@@ -35,11 +35,11 @@ export function ExercisePicker({ exercises }: ExercisePickerProps) {
 
   return (
     <div className="flex flex-col gap-4">
-      <p className="text-sm font-medium text-gray-700">
+      <p className="text-sm font-medium text-foreground">
         {selected.length}/{MAX_SELECTED} ejercicios seleccionados
       </p>
 
-      <div className="flex max-h-96 flex-col gap-4 overflow-y-auto rounded-md border border-gray-200 p-3">
+      <div className="flex max-h-96 flex-col gap-4 overflow-y-auto rounded-md border border-border p-3">
         {Array.from(grouped.entries()).map(([category, items]) => (
           <div key={category} className="flex flex-col gap-1.5">
             <span
@@ -62,7 +62,7 @@ export function ExercisePicker({ exercises }: ExercisePickerProps) {
                     "flex items-center gap-2 rounded-md border px-3 py-2 text-sm transition-colors",
                     checked
                       ? "border-accent bg-accent/5"
-                      : "border-gray-200 hover:border-gray-300",
+                      : "border-border hover:border-border",
                     disabled && "cursor-not-allowed opacity-40"
                   )}
                 >

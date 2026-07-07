@@ -26,7 +26,7 @@ export function LogoutButton() {
         <button
           onClick={open}
           disabled={isLoggingOut}
-          className="text-sm text-gray-500 hover:text-black disabled:opacity-50"
+          className="text-sm text-muted-foreground hover:text-foreground disabled:opacity-50"
         >
           {isLoggingOut ? "Cerrando..." : "Cerrar sesión"}
         </button>

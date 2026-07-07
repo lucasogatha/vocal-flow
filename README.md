@@ -142,6 +142,13 @@ Migrations em `supabase/migrations/`, nesta ordem:
 | `0013` | Traduz os 30 exercícios da Biblioteca para espanhol (atualiza em vez de recriar, preservando ids) |
 | `0014` | Traduz as features dos planos (`plans`) para espanhol |
 | `0015` | Traduz as mensagens de erro dos triggers de segurança para espanhol |
+| `0016` | Permite que professores criem exercícios personalizados |
+| `0017` | Permite que professores excluam exercícios (nativos ou próprios) |
+| `0018` | Biblioteca de Exercícios deixa de ser compartilhada — cada professor passa a ter sua própria cópia (clona automaticamente no primeiro acesso) |
+
+### Sobre a Biblioteca de Exercícios (desde a migration `0018`)
+
+Cada professor tem sua **própria cópia** dos exercícios — não é mais uma tabela compartilhada entre todos. Ao logar pela primeira vez, o professor recebe automaticamente uma cópia do "molde" de 30 exercícios nativos (`services/exercises.ts` → `ensureExerciseLibrary`, chamado no layout do professor). Criar, editar ou excluir um exercício afeta só a própria biblioteca — nunca a de outro professor.
 
 ### Promovendo o primeiro administrador
 

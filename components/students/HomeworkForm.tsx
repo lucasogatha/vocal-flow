@@ -37,7 +37,7 @@ export function HomeworkForm({ studentId, exercises }: HomeworkFormProps) {
           placeholder="Ej: Entrenamiento de respiración y afinación"
         />
         {state.errors?.name && (
-          <span className="text-sm text-red-600">{state.errors.name}</span>
+          <span className="text-sm text-red-600 dark:text-red-400">{state.errors.name}</span>
         )}
       </div>
 
@@ -55,7 +55,7 @@ export function HomeworkForm({ studentId, exercises }: HomeworkFormProps) {
         <Label htmlFor="dueDate">Fecha límite</Label>
         <Input id="dueDate" name="dueDate" type="date" min={today} required />
         {state.errors?.dueDate && (
-          <span className="text-sm text-red-600">{state.errors.dueDate}</span>
+          <span className="text-sm text-red-600 dark:text-red-400">{state.errors.dueDate}</span>
         )}
       </div>
 
@@ -66,7 +66,7 @@ export function HomeworkForm({ studentId, exercises }: HomeworkFormProps) {
           name="notes"
           rows={3}
           placeholder="Ej: repite cada ejercicio dos veces antes de la próxima clase"
-          className="rounded-md border border-gray-300 bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-black"
+          className="rounded-md border border-border bg-card px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-accent"
         />
       </div>
 
@@ -74,7 +74,7 @@ export function HomeworkForm({ studentId, exercises }: HomeworkFormProps) {
         <Label>Ejercicios (elige de 1 a 10)</Label>
         <ExercisePicker exercises={exercises} />
         {state.errors?.exerciseIds && (
-          <span className="text-sm text-red-600">
+          <span className="text-sm text-red-600 dark:text-red-400">
             {state.errors.exerciseIds}
           </span>
         )}

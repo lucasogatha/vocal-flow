@@ -17,20 +17,20 @@ export function ExerciseCard({ exercise }: { exercise: Exercise }) {
         >
           {exercise.category}
         </span>
-        <span className="text-xs text-gray-400">
+        <span className="text-xs text-muted-foreground">
           {exercise.duration_minutes} min
         </span>
       </div>
 
       <div className="flex flex-col gap-1">
-        <span className="font-medium text-gray-900">{exercise.title}</span>
-        <p className="line-clamp-2 text-sm text-gray-500">
+        <span className="font-medium text-foreground">{exercise.title}</span>
+        <p className="line-clamp-2 text-sm text-muted-foreground">
           {exercise.objective}
         </p>
       </div>
 
       <div className="flex items-center justify-between">
-        <span className="text-xs text-gray-400">{exercise.level}</span>
+        <span className="text-xs text-muted-foreground">{exercise.level}</span>
         <Link
           href={`/exercises/${exercise.id}`}
           className={buttonVariants({ variant: "outline", size: "sm" })}

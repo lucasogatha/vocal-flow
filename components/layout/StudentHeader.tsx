@@ -1,27 +1,21 @@
-"use client";
-
-import { useRouter } from "next/navigation";
-import { signOut } from "@/services/auth";
+import Link from "next/link";
+import { Logo } from "@/components/layout/Logo";
+import { LogoutButton } from "@/components/layout/LogoutButton";
+import { ThemeToggle } from "@/components/ui/theme-toggle";
 
 export function StudentHeader() {
-  const router = useRouter();
-
-  async function handleLogout() {
-    await signOut();
-    router.push("/login");
-    router.refresh();
-  }
-
   return (
-    <header className="border-b border-gray-200 bg-white">
+    <header className="border-b border-border bg-card">
       <div className="mx-auto flex max-w-md items-center justify-between px-4 py-4">
-        <span className="text-sm font-semibold">VocalFlow</span>
-        <button
-          onClick={handleLogout}
-          className="text-sm text-gray-500 hover:text-black"
-        >
-          Sair
-        </button>
+        <Link href="/student-portal" className="flex items-center gap-2">
+          <Logo />
+          <span className="text-sm font-semibold">VocalFlow</span>
+        </Link>
+
+        <div className="flex items-center gap-2">
+          <ThemeToggle />
+          <LogoutButton />
+        </div>
       </div>
     </header>
   );

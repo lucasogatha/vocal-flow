@@ -18,10 +18,10 @@ export default function TeacherError({
   return (
     <div className="flex min-h-[60vh] items-center justify-center px-4">
       <Card className="flex max-w-sm flex-col items-center gap-3 text-center">
-        <h1 className="text-lg font-semibold text-gray-900">
+        <h1 className="text-lg font-semibold text-foreground">
           Algo salió mal
         </h1>
-        <p className="text-sm text-gray-500">
+        <p className="text-sm text-muted-foreground">
           No pudimos cargar esta página ahora. Intenta de nuevo en unos
           instantes.
         </p>

@@ -31,7 +31,7 @@ export function StudentForm() {
           <Label htmlFor="name">Nombre</Label>
           <Input id="name" name="name" type="text" autoComplete="name" />
           {state.errors?.name && (
-            <span className="text-sm text-red-600">{state.errors.name}</span>
+            <span className="text-sm text-red-600 dark:text-red-400">{state.errors.name}</span>
           )}
         </div>
 
@@ -39,7 +39,7 @@ export function StudentForm() {
           <Label htmlFor="email">Correo electrónico</Label>
           <Input id="email" name="email" type="email" autoComplete="email" />
           {state.errors?.email && (
-            <span className="text-sm text-red-600">{state.errors.email}</span>
+            <span className="text-sm text-red-600 dark:text-red-400">{state.errors.email}</span>
           )}
         </div>
 
@@ -47,7 +47,7 @@ export function StudentForm() {
           <Label htmlFor="phone">Teléfono (opcional)</Label>
           <Input id="phone" name="phone" type="tel" autoComplete="tel" />
           {state.errors?.phone && (
-            <span className="text-sm text-red-600">{state.errors.phone}</span>
+            <span className="text-sm text-red-600 dark:text-red-400">{state.errors.phone}</span>
           )}
         </div>
 

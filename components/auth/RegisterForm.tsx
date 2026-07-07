@@ -52,7 +52,7 @@ export function RegisterForm() {
       className="flex w-full max-w-sm flex-col gap-4"
     >
       <div className="flex flex-col gap-1">
-        <label htmlFor="name" className="text-sm font-medium text-gray-700">
+        <label htmlFor="name" className="text-sm font-medium text-foreground">
           Nombre
         </label>
         <input
@@ -60,15 +60,15 @@ export function RegisterForm() {
           type="text"
           autoComplete="name"
           {...register("name")}
-          className="rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-black"
+          className="rounded-md border border-border px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-accent"
         />
         {errors.name && (
-          <span className="text-sm text-red-600">{errors.name.message}</span>
+          <span className="text-sm text-red-600 dark:text-red-400">{errors.name.message}</span>
         )}
       </div>
 
       <div className="flex flex-col gap-1">
-        <label htmlFor="email" className="text-sm font-medium text-gray-700">
+        <label htmlFor="email" className="text-sm font-medium text-foreground">
           Correo electrónico
         </label>
         <input
@@ -76,17 +76,17 @@ export function RegisterForm() {
           type="email"
           autoComplete="email"
           {...register("email")}
-          className="rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-black"
+          className="rounded-md border border-border px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-accent"
         />
         {errors.email && (
-          <span className="text-sm text-red-600">{errors.email.message}</span>
+          <span className="text-sm text-red-600 dark:text-red-400">{errors.email.message}</span>
         )}
       </div>
 
       <div className="flex flex-col gap-1">
         <label
           htmlFor="password"
-          className="text-sm font-medium text-gray-700"
+          className="text-sm font-medium text-foreground"
         >
           Contraseña
         </label>
@@ -95,24 +95,24 @@ export function RegisterForm() {
           type="password"
           autoComplete="new-password"
           {...register("password")}
-          className="rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-black"
+          className="rounded-md border border-border px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-accent"
         />
         {errors.password && (
-          <span className="text-sm text-red-600">
+          <span className="text-sm text-red-600 dark:text-red-400">
             {errors.password.message}
           </span>
         )}
       </div>
 
-      {serverError && <p className="text-sm text-red-600">{serverError}</p>}
+      {serverError && <p className="text-sm text-red-600 dark:text-red-400">{serverError}</p>}
       {confirmationMessage && (
-        <p className="text-sm text-green-700">{confirmationMessage}</p>
+        <p className="text-sm text-green-700 dark:text-green-400">{confirmationMessage}</p>
       )}
 
       <button
         type="submit"
         disabled={isSubmitting}
-        className="rounded-md bg-black px-4 py-2 text-sm font-medium text-white disabled:opacity-50"
+        className="rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground disabled:opacity-50"
       >
         {isSubmitting ? "Creando cuenta..." : "Crear cuenta"}
       </button>

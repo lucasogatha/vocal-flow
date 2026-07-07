@@ -78,7 +78,7 @@ export default async function HomeworksPage({
         <h1 className="text-2xl font-semibold">
           Seguimiento de Homeworks
         </h1>
-        <p className="text-sm text-gray-500">
+        <p className="text-sm text-muted-foreground">
           Todos los homeworks personalizados enviados a tus alumnos.
         </p>
       </div>

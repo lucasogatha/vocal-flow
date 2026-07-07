@@ -26,14 +26,14 @@ export function Pagination({
         className={cn(
           "text-sm",
           hasPrevious
-            ? "text-black hover:underline"
-            : "pointer-events-none text-gray-300"
+            ? "text-foreground hover:underline"
+            : "pointer-events-none text-muted-foreground"
         )}
       >
         Anterior
       </Link>
 
-      <span className="text-sm text-gray-500">
+      <span className="text-sm text-muted-foreground">
         Página {currentPage} de {totalPages}
       </span>
 
@@ -42,8 +42,8 @@ export function Pagination({
         className={cn(
           "text-sm",
           hasNext
-            ? "text-black hover:underline"
-            : "pointer-events-none text-gray-300"
+            ? "text-foreground hover:underline"
+            : "pointer-events-none text-muted-foreground"
         )}
       >
         Siguiente

@@ -62,17 +62,17 @@ export default async function DashboardPage() {
   return (
     <div className="flex flex-col gap-8">
       <div>
-        <h1 className="text-2xl font-semibold text-gray-900">Hola, {name}</h1>
-        <p className="text-sm text-gray-500">
-          Aquí tienes un resumen de tu estudio.
+        <h1 className="text-2xl font-semibold text-foreground">Hola, {name}</h1>
+        <p className="text-sm text-muted-foreground">
+          Aquí tienes un resumen de tu información.
         </p>
       </div>
 
       {subscription && (
-        <div className="flex flex-wrap items-center justify-between gap-3 rounded-lg border border-gray-200 bg-white px-4 py-3">
-          <p className="text-sm text-gray-600">
+        <div className="flex flex-wrap items-center justify-between gap-3 rounded-lg border border-border bg-card px-4 py-3">
+          <p className="text-sm text-muted-foreground">
             Plan{" "}
-            <strong className="text-gray-900">
+            <strong className="text-foreground">
               {subscription.plan.name}
             </strong>{" "}
             ·{" "}
@@ -122,14 +122,14 @@ export default async function DashboardPage() {
 
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
         <Card className="flex flex-col gap-4">
-          <h2 className="text-sm font-semibold text-gray-900">
+          <h2 className="text-sm font-semibold text-foreground">
             Progreso en los últimos 7 días
           </h2>
           <ProgressChart data={weeklyTrend} />
         </Card>
 
         <Card className="flex flex-col gap-2">
-          <h2 className="text-sm font-semibold text-gray-900">
+          <h2 className="text-sm font-semibold text-foreground">
             Próximos Homeworks
           </h2>
           <UpcomingHomeworks items={upcoming} />

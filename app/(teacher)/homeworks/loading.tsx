@@ -14,11 +14,11 @@ export default function HomeworksLoading() {
         <Skeleton className="h-10 w-40" />
       </div>
 
-      <div className="overflow-hidden rounded-xl border border-gray-200 bg-white">
+      <div className="overflow-hidden rounded-xl border border-border bg-card">
         {Array.from({ length: 6 }).map((_, index) => (
           <div
             key={index}
-            className="flex items-center gap-6 border-b border-gray-100 px-4 py-4 last:border-b-0"
+            className="flex items-center gap-6 border-b border-border px-4 py-4 last:border-b-0"
           >
             <Skeleton className="h-4 w-32" />
             <Skeleton className="h-4 w-24" />

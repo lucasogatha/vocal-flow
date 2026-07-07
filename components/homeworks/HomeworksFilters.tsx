@@ -28,7 +28,7 @@ export function HomeworksFilters({
       <select
         name="status"
         defaultValue={defaultStatus ?? ""}
-        className="h-10 rounded-md border border-gray-300 bg-white px-3 text-sm focus:outline-none focus:ring-2 focus:ring-black"
+        className="h-10 rounded-md border border-border bg-card px-3 text-sm focus:outline-none focus:ring-2 focus:ring-accent"
       >
         <option value="">Todos los estados</option>
         <option value="in_progress">En progreso</option>
@@ -39,7 +39,7 @@ export function HomeworksFilters({
       <select
         name="student"
         defaultValue={defaultStudentId ?? ""}
-        className="h-10 rounded-md border border-gray-300 bg-white px-3 text-sm focus:outline-none focus:ring-2 focus:ring-black"
+        className="h-10 rounded-md border border-border bg-card px-3 text-sm focus:outline-none focus:ring-2 focus:ring-accent"
       >
         <option value="">Todos los alumnos</option>
         {students.map((student) => (

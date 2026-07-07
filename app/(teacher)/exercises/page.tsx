@@ -1,10 +1,14 @@
+import Link from "next/link";
+import { notFound } from "next/navigation";
 import { Dumbbell } from "lucide-react";
 import { getExercises } from "@/services/exercises";
 import { ExerciseCard } from "@/components/exercises/ExerciseCard";
 import { ExerciseFilters } from "@/components/exercises/ExerciseFilters";
 import { Pagination } from "@/components/ui/pagination";
 import { EmptyState } from "@/components/ui/empty-state";
+import { buttonVariants } from "@/components/ui/button";
 import { buildPaginationHref } from "@/lib/pagination";
+import { getCurrentUser } from "@/lib/auth-guard";
 
 const PAGE_SIZE = 9;
 
@@ -18,6 +22,12 @@ export default async function ExercisesPage({
     page?: string;
   };
 }) {
+  const user = await getCurrentUser();
+
+  if (!user) {
+    notFound();
+  }
+
   const search = searchParams.search ?? "";
   const category = searchParams.category ?? "";
   const level = searchParams.level ?? "";
@@ -25,6 +35,7 @@ export default async function ExercisesPage({
     Number(searchParams.page) > 0 ? Number(searchParams.page) : 1;
 
   const { exercises, totalCount } = await getExercises({
+    teacherId: user.id,
     search,
     category: category || undefined,
     level: level || undefined,
@@ -40,12 +51,12 @@ export default async function ExercisesPage({
 
   return (
     <div className="flex flex-col gap-6">
-      <div>
+      <div className="flex flex-wrap items-center justify-between gap-4">
         <h1 className="text-2xl font-semibold">Biblioteca de Ejercicios</h1>
-        <p className="text-sm text-gray-500">
-          30 ejercicios nativos de VocalFlow, organizados por categoría y
-          nivel.
-        </p>
+
+        <Link href="/exercises/new" className={buttonVariants()}>
+          Crear ejercicio
+        </Link>
       </div>
 
       <ExerciseFilters

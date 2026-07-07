@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { ThemeProvider } from "@/components/providers/ThemeProvider";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
@@ -33,6 +34,20 @@ export const viewport: Viewport = {
   themeColor: "#5E6AD2",
 };
 
+// Roda antes da hidratação do React, direto no <head>, para aplicar o
+// tema salvo (ou a preferência do sistema) sem um "flash" do tema errado.
+const themeInitScript = `
+(function () {
+  try {
+    var stored = localStorage.getItem("vocalflow-theme");
+    var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    if (stored === "dark" || (!stored && prefersDark)) {
+      document.documentElement.classList.add("dark");
+    }
+  } catch (e) {}
+})();
+`;
+
 export default function RootLayout({
   children,
 }: {
@@ -40,7 +55,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es-419" className={inter.variable}>
-      <body className="font-sans">{children}</body>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+      </head>
+      <body className="font-sans">
+        <ThemeProvider>{children}</ThemeProvider>
+      </body>
     </html>
   );
 }

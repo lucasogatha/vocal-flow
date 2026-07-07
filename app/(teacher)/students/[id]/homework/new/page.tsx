@@ -22,21 +22,22 @@ export default async function NewHomeworkPage({
     notFound();
   }
 
-  // Busca todos os exercícios (30 no total) para o seletor, sem paginação.
-  const { exercises } = await getExercises({ pageSize: 100 });
+  // Busca todos os exercícios da biblioteca DESSE professor (até 100),
+  // para o seletor, sem paginação.
+  const { exercises } = await getExercises({ teacherId: user.id, pageSize: 100 });
 
   return (
     <div className="flex max-w-2xl flex-col gap-6">
       <Link
         href={`/students/${student.id}`}
-        className="w-fit text-sm text-gray-500 hover:text-black"
+        className="w-fit text-sm text-muted-foreground hover:text-foreground"
       >
         ← Volver a {student.name}
       </Link>
 
       <div>
         <h1 className="text-2xl font-semibold">Nuevo Homework</h1>
-        <p className="text-sm text-gray-500">
+        <p className="text-sm text-muted-foreground">
           Arma un homework personalizado para {student.name} con ejercicios
           de la biblioteca.
         </p>

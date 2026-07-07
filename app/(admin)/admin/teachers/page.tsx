@@ -9,7 +9,7 @@ export default async function AdminTeachersPage() {
     <div className="flex flex-col gap-6">
       <div>
         <h1 className="text-2xl font-semibold">Profesores</h1>
-        <p className="text-sm text-gray-500">
+        <p className="text-sm text-muted-foreground">
           Todos los profesores registrados en VocalFlow.
         </p>
       </div>
@@ -20,10 +20,10 @@ export default async function AdminTeachersPage() {
           title="Ningún profesor registrado todavía."
         />
       ) : (
-        <div className="overflow-x-auto rounded-xl border border-gray-200 bg-white">
+        <div className="overflow-x-auto rounded-xl border border-border bg-card">
           <table className="w-full text-left text-sm">
             <thead>
-              <tr className="border-b border-gray-100 text-xs uppercase tracking-wide text-gray-400">
+              <tr className="border-b border-border text-xs uppercase tracking-wide text-muted-foreground">
                 <th className="px-4 py-3 font-medium">Nombre</th>
                 <th className="px-4 py-3 font-medium">Correo</th>
                 <th className="px-4 py-3 font-medium">Plan</th>
@@ -32,23 +32,23 @@ export default async function AdminTeachersPage() {
                 <th className="px-4 py-3 font-medium">Registro</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-gray-100">
+            <tbody className="divide-y divide-border">
               {teachers.map((teacher) => (
                 <tr key={teacher.id}>
-                  <td className="px-4 py-3 font-medium text-gray-900">
+                  <td className="px-4 py-3 font-medium text-foreground">
                     {teacher.name ?? "—"}
                   </td>
-                  <td className="px-4 py-3 text-gray-600">{teacher.email}</td>
-                  <td className="px-4 py-3 text-gray-600">
+                  <td className="px-4 py-3 text-muted-foreground">{teacher.email}</td>
+                  <td className="px-4 py-3 text-muted-foreground">
                     {teacher.planName}
                   </td>
-                  <td className="px-4 py-3 text-gray-600">
+                  <td className="px-4 py-3 text-muted-foreground">
                     {teacher.studentsCount}
                   </td>
-                  <td className="px-4 py-3 text-gray-600">
+                  <td className="px-4 py-3 text-muted-foreground">
                     {teacher.homeworksCount}
                   </td>
-                  <td className="px-4 py-3 text-gray-600">
+                  <td className="px-4 py-3 text-muted-foreground">
                     {new Date(teacher.createdAt).toLocaleDateString("es-419")}
                   </td>
                 </tr>

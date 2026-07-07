@@ -26,14 +26,14 @@ export default async function PricingPage() {
     <div className="flex flex-col gap-8">
       <div>
         <h1 className="text-2xl font-semibold">Planes</h1>
-        <p className="text-sm text-gray-500">
+        <p className="text-sm text-muted-foreground">
           Elige el plan ideal para tu estudio.
         </p>
       </div>
 
       {currentPlanSlug && (
-        <p className="text-sm text-gray-500">
-          Estás en el plan <strong className="text-gray-900">
+        <p className="text-sm text-muted-foreground">
+          Estás en el plan <strong className="text-foreground">
             {currentPlanSlug === "pro" ? "Pro" : "Starter"}
           </strong>{" "}
           — {studentsCount} alumno{studentsCount === 1 ? "" : "s"} registrado
@@ -52,7 +52,7 @@ export default async function PricingPage() {
               isCurrent={isCurrent}
               cta={
                 isCurrent ? (
-                  <span className="flex h-10 w-full items-center justify-center rounded-md bg-gray-100 text-sm font-medium text-gray-500">
+                  <span className="flex h-10 w-full items-center justify-center rounded-md bg-muted text-sm font-medium text-muted-foreground">
                     Tu plan actual
                   </span>
                 ) : (
