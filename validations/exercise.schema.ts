@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { EXERCISE_CATEGORIES, EXERCISE_LEVELS } from "@/services/exercises";
+import { EXERCISE_CATEGORIES, EXERCISE_LEVELS } from "@/lib/exercise-constants";
 
 export const exerciseSchema = z.object({
   title: z

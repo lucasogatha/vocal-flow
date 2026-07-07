@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Alert } from "@/components/ui/alert";
-import { EXERCISE_CATEGORIES, EXERCISE_LEVELS } from "@/services/exercises";
+import { EXERCISE_CATEGORIES, EXERCISE_LEVELS } from "@/lib/exercise-constants";
 
 const initialState: CreateExerciseState = {};
 

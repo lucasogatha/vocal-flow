@@ -1,6 +1,6 @@
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { EXERCISE_CATEGORIES, EXERCISE_LEVELS } from "@/services/exercises";
+import { EXERCISE_CATEGORIES, EXERCISE_LEVELS } from "@/lib/exercise-constants";
 
 type ExerciseFiltersProps = {
   defaultSearch?: string;

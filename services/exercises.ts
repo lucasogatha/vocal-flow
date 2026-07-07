@@ -2,24 +2,10 @@ import { createClient } from "@/lib/supabase/server";
 import { countRows } from "@/lib/db-helpers";
 import type { Exercise, ExerciseCategory, ExerciseLevel } from "@/types/exercise";
 
-export const EXERCISE_CATEGORIES: ExerciseCategory[] = [
-  "Respiración",
-  "Calentamiento Vocal",
-  "Apoyo Respiratorio",
-  "Afinación",
-  "Voz de Pecho",
-  "Voz de Cabeza",
-  "Voz Mixta",
-  "Extensión Vocal",
-  "Resonancia",
-  "Dicción",
-];
-
-export const EXERCISE_LEVELS: ExerciseLevel[] = [
-  "Principiante",
-  "Intermedio",
-  "Avanzado",
-];
+// Reexportado por compatibilidade — o conteúdo real vive em
+// lib/exercise-constants.ts (que não importa nada de servidor) para
+// poder ser usado também por componentes de cliente.
+export { EXERCISE_CATEGORIES, EXERCISE_LEVELS } from "@/lib/exercise-constants";
 
 // Garante que o professor tenha sua própria cópia da Biblioteca de
 // Exercícios. Se ainda não tiver nenhum exercício, clona o "molde"
